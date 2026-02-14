@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Urologic Oncology Clinical Pathways</title>
+<style>
+:root {
+  --navy: #0C2340;
+  --navy-light: #163563;
+  --maize: #FFCB05;
+  --teal: #00B2A9;
+  --white: #fff;
+  --bg: #f0f2f5;
+  --card-bg: #fff;
+  --border: #e0e4e8;
+  --text: #1a1d21;
+  --text-sec: #5f6b7a;
+  --text-muted: #8e99a4;
+  --green: #16a34a;
+  --green-bg: #dcfce7;
+  --orange: #ea580c;
+  --orange-bg: #fff7ed;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --blue: #2563eb;
+  --blue-bg: #eff6ff;
+  --purple: #7c3aed;
+  --indigo: #4338ca;
+  --crimson: #b91c1c;
+  --emerald: #047857;
+  --pink: #be185d;
+  --rad: 14px;
+  --rad-sm: 10px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow: 0 2px 8px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  --transition: .25s cubic-bezier(.4,0,.2,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 60px;
+}
+
+/* ========== HEADER ========== */
+.header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: var(--white);
+  padding: 18px 20px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(12,35,64,.25);
+}
+.header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.header-brand h1 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.3;
+}
+.header-brand .subtitle {
+  font-size: 12px;
+  opacity: .65;
+  margin-top: 2px;
+  font-weight: 400;
+}
+.share-btn {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  color: var(--white);
+  border-radius: var(--rad-sm);
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition);
+  white-space: nowrap;
+}
+.share-btn:hover { background: rgba(255,255,255,.22); }
+.share-btn svg { width: 16px; height: 16px; }
+
+/* ========== PATHWAY SELECTOR ========== */
+.pathway-section {
+  max-width: 720px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+.pathway-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.pathway-chips {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.pathway-chips::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-sec);
+  transition: all var(--transition);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:active { transform: scale(.97); }
+.chip.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+  box-shadow: 0 2px 8px rgba(12,35,64,.3);
+}
+.chip.coming-soon {
+  opacity: .4;
+  cursor: default;
+  font-style: italic;
+}
+
+/* ========== SEARCH ========== */
+.search-wrap {
+  max-width: 720px;
+  margin: 14px auto 0;
+  padding: 0 16px;
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border: 2px solid var(--border);
+  border-radius: var(--rad);
+  font-size: 15px;
+  font-family: inherit;
+  background: var(--card-bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.search-input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0,178,169,.15);
+}
+.search-input::placeholder { color: var(--text-muted); }
+
+/* ========== SECTION NAV ========== */
+.section-nav {
+  max-width: 720px;
+  margin: 14px auto 0;
+  padding: 0 16px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.section-nav::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: var(--card-bg);
+  color: var(--text-sec);
+  transition: all var(--transition);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-tab:active { transform: scale(.97); }
+.nav-tab.active {
+  background: var(--teal);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(0,178,169,.3);
+}
+
+/* ========== CONTENT AREA ========== */
+.content-area {
+  max-width: 720px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+/* ========== SECTION HEADERS ========== */
+.section-group { margin-top: 20px; }
+.section-head {
+  padding: 14px 18px;
+  border-radius: var(--rad) var(--rad) 0 0;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: .2px;
+}
+.section-head .icon { font-size: 18px; }
+
+/* Section colors per pathway */
+.bg-bladder-nmibc { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+.bg-bladder-cyst { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+.bg-bladder-surv { background: linear-gradient(135deg, #059669, #047857); }
+.bg-prostate { background: linear-gradient(135deg, #4338ca, #3730a3); }
+.bg-prostate-surv { background: linear-gradient(135deg, #0e7490, #0d6371); }
+.bg-kidney { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+.bg-kidney-surv { background: linear-gradient(135deg, #be185d, #9d174d); }
+
+/* ========== ACCORDION CARDS ========== */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  overflow: hidden;
+  transition: background var(--transition);
+}
+.card:last-child { border-radius: 0 0 var(--rad) var(--rad); }
+
+.card-head {
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text);
+  transition: background var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+.card-head:hover { background: #f8f9fb; }
+.card-head .chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  color: var(--text-muted);
+}
+.card.open .card-head .chevron { transform: rotate(180deg); }
+.card.open .card-head { color: var(--navy); }
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.card.open .card-body { max-height: 8000px; }
+
+.card-content {
+  padding: 2px 18px 18px;
+}
+.card-content ul { list-style: none; padding: 0; }
+.card-content li {
+  padding: 9px 0 9px 26px;
+  position: relative;
+  font-size: 14px;
+  color: var(--text-sec);
+  line-height: 1.55;
+  border-bottom: 1px solid #f1f3f5;
+}
+.card-content li:last-child { border-bottom: none; }
+.card-content li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+.card-content li strong { color: var(--text); font-weight: 600; }
+
+/* ========== CALLOUT BOXES ========== */
+.callout {
+  border-radius: var(--rad-sm);
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 13px;
+  line-height: 1.55;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.callout strong { font-weight: 700; }
+.callout-info {
+  background: var(--blue-bg);
+  border-left: 4px solid var(--blue);
+  color: #1e3a5f;
+}
+.callout-warn {
+  background: var(--orange-bg);
+  border-left: 4px solid var(--orange);
+  color: #7c2d12;
+}
+.callout-tip {
+  background: var(--green-bg);
+  border-left: 4px solid var(--green);
+  color: #14532d;
+}
+
+/* ========== RISK CARDS ========== */
+.risk-card {
+  border-radius: var(--rad-sm);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-left: 5px solid;
+}
+.risk-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.risk-card ul { margin: 0; }
+.risk-card li {
+  font-size: 13px;
+  border-bottom: none !important;
+  padding: 3px 0 3px 26px;
+}
+.rc-low { background: var(--green-bg); border-color: var(--green); }
+.rc-low h4 { color: var(--green); }
+.rc-mid { background: var(--orange-bg); border-color: var(--orange); }
+.rc-mid h4 { color: var(--orange); }
+.rc-high { background: var(--red-bg); border-color: var(--red); }
+.rc-high h4 { color: var(--red); }
+.rc-neutral { background: #f1f5f9; border-color: #94a3b8; }
+.rc-neutral h4 { color: var(--text-sec); }
+
+/* ========== PROTOCOL TABLES ========== */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: var(--rad-sm);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.proto-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 640px;
+}
+.proto-table th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 10px 8px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: .3px;
+}
+.proto-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.proto-table tr:nth-child(even) { background: #f8fafc; }
+.proto-table tr:last-child td { border-bottom: none; }
+.proto-table .row-label { font-weight: 700; white-space: nowrap; color: var(--navy); }
+
+.sched-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 600px;
+}
+.sched-table th {
+  background: var(--indigo);
+  color: var(--white);
+  padding: 9px 6px;
+  font-weight: 600;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+.sched-table th:first-child { text-align: left; }
+.sched-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+}
+.sched-table td:first-child { text-align: left; font-weight: 600; color: var(--text); }
+.sched-table tr:nth-child(even) { background: #f8fafc; }
+.sched-table tr:last-child td { border-bottom: none; }
+
+/* ========== INLINE LABELS ========== */
+.sub-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 14px 0 8px;
+}
+.sub-heading:first-child { margin-top: 0; }
+.intro-text {
+  font-size: 13px;
+  color: var(--text-sec);
+  margin-bottom: 10px;
+}
+
+/* ========== NO RESULTS ========== */
+.no-results {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 32px;
+  padding: 0 16px 16px;
+}
+
+/* ========== HIGHLIGHT ========== */
+mark {
+  background: var(--maize);
+  padding: 1px 3px;
+  border-radius: 3px;
+  color: var(--text);
+}
+
+/* ========== QR MODAL ========== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+.modal-overlay.show { display: flex; }
+.modal-box {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+}
+.modal-box h2 { font-size: 19px; margin-bottom: 4px; }
+.modal-box p { font-size: 13px; color: var(--text-sec); margin-bottom: 20px; }
+.modal-url {
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--text-sec);
+  background: #f8fafc;
+  margin-top: 16px;
+  font-family: inherit;
+}
+.modal-close {
+  margin-top: 20px;
+  padding: 11px 32px;
+  border-radius: var(--rad-sm);
+  border: none;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition);
+}
+.modal-close:hover { background: var(--navy-light); }
+
+/* ========== PATHWAY VISIBILITY ========== */
+.pathway { /* shown by default for active pathway */ }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+  .header { padding: 14px 16px 12px; }
+  .header-brand h1 { font-size: 16px; }
+  .card-head { padding: 12px 14px; font-size: 14px; }
+  .card-content { padding: 2px 14px 14px; }
+  .card-content li { font-size: 13px; padding-left: 22px; }
+  .section-head { font-size: 14px; padding: 12px 14px; }
+  .chip { padding: 9px 16px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <h1>Urologic Oncology Pathways</h1>
+      <div class="subtitle">Division of Urologic Oncology &middot; Dept. of Urology</div>
+    </div>
+    <button class="share-btn" onclick="showQR()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3"/><line x1="20" y1="14" x2="20" y2="17"/><line x1="14" y1="20" x2="17" y2="20"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<!-- ===== PATHWAY SELECTOR ===== -->
+<div class="pathway-section">
+  <div class="pathway-label">Pathways</div>
+  <div class="pathway-chips">
+    <div class="chip active" data-pw="bladder" onclick="selectPathway(this)">Bladder Cancer</div>
+    <div class="chip" data-pw="prostate" onclick="selectPathway(this)">Prostate Cancer</div>
+    <div class="chip" data-pw="kidney" onclick="selectPathway(this)">Kidney Cancer</div>
+  </div>
+</div>
+
+<!-- ===== SEARCH ===== -->
+<div class="search-wrap">
+  <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <input class="search-input" type="text" placeholder="Search this pathway..." oninput="doSearch(this.value)">
+</div>
+
+<!-- ===== SECTION NAV ===== -->
+<div class="section-nav" id="sectionNav"></div>
+
+<!-- ===== CONTENT ===== -->
+<div class="content-area" id="contentArea">
+
+<!-- ======================================== -->
+<!--            BLADDER CANCER                -->
+<!-- ======================================== -->
+<div class="pathway" data-pathway="bladder">
+
+<!-- NMIBC -->
+<div class="section-group" data-section="nmibc" id="nmibc">
+<div class="section-head bg-bladder-nmibc"><span class="icon">&#x1F52C;</span> NMIBC Care Pathway</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Principles of TURBT<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Obtain preoperative <strong>CTU</strong> prior to OR to determine need for ureteroscopy</li>
+<li>Bilateral retrograde pyelograms for patients who cannot have CTU</li>
+<li>No need for office cysto if tumor is obvious on imaging</li>
+<li>Preop <strong>U/A with reflex urine culture</strong></li>
+<li>If disease is possibly non-invasive, order peri-operative intravesical <strong>Gemcitabine</strong> with case request</li>
+<li>Document <strong>exam under anesthesia</strong> (EUA dot phrase) with each initial resection or re-resection with concern for disease progression</li>
+<li><strong>Re-resect if:</strong> known residual disease and bladder preservation desired; any high-grade disease without muscularis propria on pathology; any T1 tumors, even if muscularis propria is in the specimen</li>
+<li>Peri-operative Gemcitabine preferably administered in OR for tumors thought to be non-invasive</li>
+</ul>
+<div class="callout callout-warn"><strong>Avoid</strong> peri-operative Gemcitabine if bladder perforation is suspected.</div>
+<ul>
+<li>For recurrent non-invasive disease, consider <strong>enhanced cystoscopy TURBT</strong> (e.g. Blue-Light). Order Cysview with case request.</li>
+<li>Clinical SUO Fellows are preferred surgeons for TURBT requests outside of the UroOnc Division</li>
+<li>Use a <strong>shared TURBT case model</strong> whenever possible to expedite surgical care and maximize OR utilization</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Principles of Intravesical Therapy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Complete resection prior to initiating intravesical therapy</li>
+<li>Treatments should begin <strong>2&ndash;4 weeks</strong> after resection</li>
+<li><strong>High-risk</strong> (HG Ta &gt;3cm, HG T1, CIS): BCG 1st line; Gem/Doce 2nd line with 2yr maintenance; re-induction BCG 3rd line; Adstillidrin 4th line if refuses cystectomy; consider clinical trials</li>
+<li><strong>Intermediate-risk</strong> (HG Ta &lt;3cm): BCG, Gem/Doce, or trial of surveillance alone</li>
+<li>BCG dose reduction as needed per supply or tolerance; down to <strong>10% (5mg TICE)</strong> can still be effective</li>
+<li>Maintenance BCG at <strong>3, 6, and 12 months</strong> from first induction dose. Can extend to 3 years at surgeon discretion if supply allows.</li>
+<li><strong>Recurrent low-grade Ta:</strong> Induction + maintenance Gemcitabine monthly x 24mo (1st line); Mitomycin C (2nd line); BCG or Gem/Doce also options</li>
+</ul>
+<div class="callout callout-warn"><strong>BCG Shortage:</strong> Prioritize induction for HG T1 and CIS, plus continuation of initiated courses. Maintenance limited to 12 months. Gem/Doce as alternative.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Surveillance for NMIBC<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>U/A</strong> on arrival to clinic</li>
+<li>Antibiotic prophylaxis not necessary; consider if reusable cystoscope or patient has history of UTI with surveillance cysto</li>
+<li>Fellows follow patients they resect; patients continue with subsequent fellows</li>
+<li>Patient&rsquo;s bladder cancer <strong>pathology history</strong> must be in every surveillance cysto note</li>
+<li>Date, modality, and result of <strong>most recent upper tract imaging</strong> must be in every surveillance cysto note</li>
+<li>NMIBC low/intermediate/high-risk <strong>surveillance dot phrase</strong> must be in every surveillance cysto note</li>
+<li>Once surveillance complete, send <strong>letter to patient and PCP</strong> with triggers for re-referral (gross hematuria, micro hematuria, or masses on imaging)</li>
+</ul></div></div></div>
+</div><!-- end nmibc -->
+
+<!-- Cystectomy: Pre-Op -->
+<div class="section-group" data-section="b-preop" id="b-preop">
+<div class="section-head bg-bladder-cyst"><span class="icon">&#x1F4CB;</span> Cystectomy: Preoperative Evaluation</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Before the Clinic Visit<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Obtain notes from outside urologist, all bladder cancer pathology reports, and archive cross-sectional abdominal/pelvic imaging (CT or MRI) if within 6 months</li>
+<li>Have most-recent TURBT pathology reviewed if not previously reviewed at Michigan Medicine</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">During the Clinic Visit<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>If &ge; cT2 or N+, assure <strong>neoadjuvant chemo</strong> considered; arrange hem/onc referral if appropriate</li>
+<li>Discuss early ambulation, incentive spirometer, expect <strong>3&ndash;5 day stay</strong></li>
+<li>Increase activity (walking, cardio, <strong>MSHOP</strong>) beginning 4 weeks pre-op; provide MSHOP bag</li>
+<li>Stop smoking &ge;4 weeks prior; refer to cessation if needed</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Case Request &amp; Pre-Op Orders<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Pre-op H&P/consent; anesthesia eval and medical clearances PRN</li>
+<li><strong>Labs:</strong> Comp, CBCP, PT, PTT, INR, T&S, U/A with reflex culture; EKG within 1 year</li>
+<li><strong>ET Consult</strong> &mdash; mark preferred stoma site; add alternate if surgeon preference</li>
+<li>Nutrition Consult</li>
+<li><strong>Staging:</strong> CT Urogram or A/P and Chest CT within 6 weeks of surgery</li>
+<li><strong>Cefoxitin</strong> 30 mg/kg (or alt if allergic) IV on call to OR</li>
+<li><strong>Acetaminophen</strong> 1000mg PO 30 min prior to OR</li>
+<li><strong>Alvimopan</strong> 12mg PO 30min&ndash;5hrs prior, then 12mg BID x 7 days</li>
+</ul>
+<div class="callout callout-warn"><strong>Alvimopan:</strong> Avoid if opioids &gt;7 consecutive days prior, liver failure, kidney failure, or GI obstruction. D/C on POD 2 if not requiring opioids.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Patient Instructions (Surgery Schedulers)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Bring gum or hard candy for post-op</li>
+<li><strong>NPO:</strong> No solid food 8hrs prior (NPO after midnight for first-start); clear fluids up to 2hrs prior; no bowel prep</li>
+<li><strong>Carb loading:</strong> 36 oz white grape juice (100% pure) &mdash; 24 oz 7&ndash;10pm night prior; 12 oz day of surgery up to 2hrs prior</li>
+</ul></div></div></div>
+</div><!-- end b-preop -->
+
+<!-- Cystectomy: Intra-Op -->
+<div class="section-group" data-section="b-intraop" id="b-intraop">
+<div class="section-head bg-bladder-cyst"><span class="icon">&#x1FA7A;</span> Cystectomy: Intraoperative</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Intraoperative Protocol<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>SCDs placed prior to induction</li>
+<li><strong>5000 units SQ heparin</strong> post induction</li>
+<li>OG tube &mdash; remove at extubation</li>
+<li>Core temp <strong>&gt;36&deg;C</strong></li>
+<li><strong>IVF:</strong> 3 cc/kg/hr; SPV and PPV directed; vasopressor and 250cc boluses for hemodynamic goals</li>
+<li><strong>Abx:</strong> Re-dose per guidelines (Cefoxitin: 1g &lt;80kg; 2g &ge;80kg)</li>
+<li><strong>Acetaminophen:</strong> 1000mg IV prior to emergence (if &ge;6hrs after preop dose)</li>
+<li><strong>Transfuse:</strong> Hct &lt;21% no CAD; &lt;24% with CAD</li>
+<li>Pelvic drain &mdash; JP and/or Foley at surgeon discretion</li>
+<li><strong>6-Fr</strong> open-ended single-J ureteral stents</li>
+<li>&frac12;% Marcaine to all incision sites</li>
+</ul></div></div></div>
+</div><!-- end b-intraop -->
+
+<!-- Cystectomy: Post-Op -->
+<div class="section-group" data-section="b-postop" id="b-postop">
+<div class="section-head bg-bladder-cyst"><span class="icon">&#x1F3E5;</span> Cystectomy: Postoperative</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Immediate Post-Op (PACU &amp; Floor)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>PACU Labs:</strong> CBCP, Basic</li>
+<li><strong>Abx:</strong> Cefoxitin (or alt) x 24hr then D/C</li>
+<li><strong>DVT:</strong> SCDs + Heparin 5000u SQ Q8H</li>
+<li><strong>Pain:</strong> Avoid narcotics; Acetaminophen 1000mg IV Q6H (PO when on clears); Toradol 15mg IV Q6H x 48hr (POD#1 if GFR&gt;60)</li>
+<li><strong>GI:</strong> Famotidine 20mg IV Q12H day 0; transition PO when tolerating diet</li>
+<li><strong>Transfuse:</strong> 2U PRBC for HCT &le;21% (no CAD) or &le;24% (CAD); hold Toradol if any transfusion; hold heparin if &gt;2U in 24hrs</li>
+<li>Gum/hard candy Q2&ndash;4hr beginning POD 1</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Daily Management (POD 1&ndash;4)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Neobladder:</strong> 60cc saline irrigations Q6H from POD 1; teach patient POD 2</li>
+<li><strong>Labs:</strong> CBCP, Basic, Ca, Mg, Phos POD 1&ndash;4; PRN thereafter</li>
+<li><strong>Ambulation:</strong> POD 0 OOB to chair; thereafter chair 6x/day, ambulate 6x/day; PT only if debilitated</li>
+<li><strong>Diet (Open):</strong> 8oz water Q8H POD 0; clears POD 1; regular POD 2</li>
+<li><strong>Diet (Robotic):</strong> Clears POD 0; regular POD 1</li>
+<li><strong>Lasix:</strong> 10mg IV POD 2 and 4 if renal function at baseline</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Stent &amp; Drain Management<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Uncomplicated:</strong> Remove 1st stent if tolerating regular diet POD 3&ndash;4; 2nd stent 4hrs later or next AM. Cipro PO x1 1hr prior to 1st stent.</li>
+<li><strong>Complicated:</strong> Stents at surgeon discretion</li>
+<li><strong>Foley/Pelvic Drain</strong> (NOT neobladder catheter): Remove POD 1</li>
+<li><strong>JP:</strong> Send JP Cr prior to 1st stent, then 2hrs after 2nd stent; if serous, remove</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Discharge Planning<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Initiate D/C planning <strong>POD 1</strong> or sooner</li>
+<li>VNA 3x/wk weeks 1&ndash;2; 2x/wk weeks 3&ndash;4</li>
+<li>Anticipate D/C <strong>POD 3&ndash;5</strong>; flatus and soft abdomen required</li>
+<li><strong>Neobladder:</strong> UCx from Foley on D/C day; 3-day culture-directed abx/antifungal starting day before Foley removal</li>
+<li><strong>Famotidine</strong> 20mg PO x 90 days</li>
+<li><strong>Apixaban</strong> 2.5mg BID x 30 days for DVT prophylaxis (all patients)</li>
+<li>CBC &amp; Basic 5&ndash;7 days post-D/C (can be local); consider hydration if dehydrated</li>
+<li><strong>Neobladder catheter:</strong> Remove 2 weeks post-op at nurse visit; cystogram prior. Reinforce self-cath/irrigations BID x 90 days.</li>
+</ul>
+<div class="callout callout-info"><strong>Return Visits:</strong> 1&ndash;2 wk nurse (staple/stent PRN, CBC/Basic); 6 wk APP (renal US, CBC, Basic); 3 mo MD (CT A/P, Basic); then per surveillance.</div>
+</div></div></div>
+</div><!-- end b-postop -->
+
+<!-- Post-Cystectomy Surveillance -->
+<div class="section-group" data-section="b-surv" id="b-surv">
+<div class="section-head bg-bladder-surv"><span class="icon">&#x1F4C5;</span> Post-Cystectomy Surveillance</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">General Principles<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Pathology discussion; letter to patient, PCP, referring urologist, and med onc</li>
+<li>Refer high-risk (<strong>ypT2, pT3, variant histology, N+</strong>) to med onc at 6 weeks for adjuvant therapy</li>
+<li><strong>6-week visit:</strong> APP + ET (if urostomy) with CMP, CBC, Renal US; consider Signatera</li>
+<li><strong>3-month visit:</strong> Surgeon with imaging per risk categories and BMP</li>
+<li>Further surveillance with APP per risk categories. Refer to home urologist when possible. Defer imaging to med onc if on adjuvant.</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Risk-Stratified Surveillance<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-neutral"><h4>Non-Bladder Cancer Indications</h4><ul><li>3mo: Basic with surgeon</li><li>12mo: Basic with APP</li><li>Annual Basic with PCP to year 10</li></ul></div>
+<div class="risk-card rc-low"><h4>Low Risk (LG pTa)</h4><ul><li>3mo: Basic with surgeon</li><li>12mo and annually to year 5: Basic, Renal US with APP</li><li>Annual Basic with PCP to year 10</li></ul></div>
+<div class="risk-card rc-mid"><h4>Intermediate Risk (HG pTa, pT1, pT0 post-TURBT alone)</h4><ul><li>3mo: Basic with surgeon</li><li>Mo 6 &amp; Q6mo to 2yr: Basic, CTU, urine cytology with APP</li><li>Yr 2&ndash;5 annually: Basic, Renal US, urine cytology with APP</li><li>Yr 5&ndash;10 annually: Basic with PCP/local urologist</li></ul></div>
+<div class="risk-card rc-high"><h4>High Risk (&ge;pT2, CIS, N+, M+, Positive Margin, Variant Histology, pT0 post-NAC)</h4><ul><li>3mo: Basic, CTU with surgeon</li><li>Mo 6 &amp; Q6mo to 2yr: Basic, Chest CT/CTU, urine cytology with APP</li><li>Yr 2&ndash;10 annually: Basic, Renal US, urine cytology with APP</li></ul></div>
+<div class="callout callout-info"><strong>Urethral Wash:</strong> At surgeon discretion; consider strongly for CIS or prostatic/urethral disease history.</div>
+</div></div></div>
+</div><!-- end b-surv -->
+</div><!-- end bladder -->
+
+
+<!-- ======================================== -->
+<!--            PROSTATE CANCER               -->
+<!-- ======================================== -->
+<div class="pathway" data-pathway="prostate" style="display:none">
+
+<!-- Preoperative -->
+<div class="section-group" data-section="p-preop" id="p-preop">
+<div class="section-head bg-prostate"><span class="icon">&#x1F4CB;</span> Preoperative Evaluation</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">NP Visit<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>H&P</strong> (+ family cancer history form)</li>
+<li><strong>Screening:</strong> EPIC-CP (old AUASI, SHIM)</li>
+<li><strong>Education:</strong> MUSIC, MPOP, &plusmn;MSHOP; preop seminar (live + recordings)</li>
+<li><strong>Pathology:</strong> Ensure reviewed at UM (OK to omit if N/A, unlikely to change mgmt)</li>
+<li><strong>Radiation Oncology:</strong> Discuss evaluation/referral</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Referrals &amp; Consultations<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Pre-op clinic H&P (local if &gt;1hr drive)</li>
+<li>MSHOP referral</li>
+<li>Consultations as indicated: Medicine, Cardiac, Pulmonary, Endocrine, others</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Labs &amp; Imaging<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Labs:</strong> CBC, BMP, Type &amp; Screen, UA with reflex culture; no need to repeat PSA</li>
+<li>Check labs after NP visit if preop done locally</li>
+<li><strong>PSMA PET:</strong> &ge;GG3 OR PSA &ge;20 (including in lieu of prior CT/bone scan)</li>
+<li><strong>MRI:</strong> &ge;GG3 OR PSA &ge;20 OR &ge;cT3</li>
+</ul></div></div></div>
+</div><!-- end p-preop -->
+
+<!-- Perioperative -->
+<div class="section-group" data-section="p-periop" id="p-periop">
+<div class="section-head bg-prostate"><span class="icon">&#x1FA7A;</span> Perioperative Care</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Pre-Op Day &amp; Intraoperative<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Bowel Prep:</strong> Clear liquids x 24hr (no enema)</li>
+<li><strong>NPO:</strong> 4 hours prior</li>
+<li>Type &amp; Screen in AM</li>
+<li><strong>Abx:</strong> Cefazolin (alt: Clindamycin/Gentamicin) after induction</li>
+<li><strong>DVT:</strong> SQH + SCDs for all patients</li>
+<li><strong>Intra-op:</strong> OG tube; limit IVF to 2L for entire case; administer local analgesia</li>
+<li><strong>Post-PACU:</strong> No PACU labs unless otherwise indicated</li>
+</ul></div></div></div>
+</div><!-- end p-periop -->
+
+<!-- Postoperative -->
+<div class="section-group" data-section="p-postop" id="p-postop">
+<div class="section-head bg-prostate"><span class="icon">&#x1F3E5;</span> Postoperative Care</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">POD 0 (Day of Surgery)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Pain:</strong> PO Tylenol + Tramadol/Oxycodone/Toradol (if no CI); IV only for breakthrough</li>
+<li><strong>Diet:</strong> Clears &rarr; ADAT</li>
+<li><strong>Drains:</strong> Foley &plusmn; JP</li>
+<li><strong>Meds:</strong> Abx x 24hr; Home ASA if cardiac hx</li>
+<li><strong>Activity:</strong> OOB to chair, ambulate in 4hr, IS</li>
+<li><strong>DVT:</strong> SCDs + SQH</li>
+<li><strong>Labs:</strong> None unless indicated; none for same-day D/C</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">POD 1 (Day of Discharge)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Pain:</strong> PO Tylenol + Tramadol/Oxycodone; Toradol if Cr OK</li>
+<li><strong>Diet:</strong> Regular; HLIV if &gt;300cc PO intake</li>
+<li><strong>Drains:</strong> D/C JP (check JP Cr if output &gt;30cc after OOB); home with Foley; Foley/leg bag teaching</li>
+<li><strong>Meds:</strong> Colace 100mg BID + Miralax 17g daily; Bacitracin to meatus QID</li>
+<li><strong>Activity:</strong> Ambulate x4; IS</li>
+<li><strong>Labs:</strong> CBC, BMP</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Discharge<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>D/C Meds:</strong> PO pain (6 pills PRN), Colace, Miralax, Bactrim x1 dose pre-catheter removal (alt: Cipro/Keflex), Bacitracin to tip QID until catheter out; <strong>No Flomax</strong></li>
+<li><strong>Supplies:</strong> Foley bags, leg bags (from OBS/5C)</li>
+<li><strong>Restrictions:</strong> No lifting &gt;10 lbs x 6 weeks; no driving with catheter or on narcotics</li>
+</ul>
+<div class="callout callout-warn"><strong>Important:</strong> Catheter questions should be directed straight to University of Michigan Urology.</div>
+<ul>
+<li><strong>Follow-up:</strong> Nursing call 1&ndash;2 days; Nursing visit 5&ndash;7 days (catheter removal); Survivorship 6&ndash;8 wk; MD 3&ndash;4 mo</li>
+</ul></div></div></div>
+</div><!-- end p-postop -->
+
+<!-- Survivorship -->
+<div class="section-group" data-section="p-surv" id="p-surv">
+<div class="section-head bg-prostate-surv"><span class="icon">&#x1F4C5;</span> Survivorship &amp; Follow-up</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Post-Op Milestones<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>5&ndash;7 days:</strong> Catheter/staple removal; start Kegels; start PDE-5i (Viagra 50mg QOD or Cialis 5mg daily); schedule PFT for 4 wk post-op (book pre-op)</li>
+<li><strong>6&ndash;8 wk Survivorship:</strong> APP + sex therapist; penile rehab (prelude, VED); continue Kegels; PFT monitoring</li>
+<li><strong>3&ndash;4 mo MD:</strong> Discuss/order germline testing if indicated</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Low Risk Schedule (GG1-2, pT2N0, R0)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="table-wrap"><table class="sched-table">
+<tr><th>Timeline</th><th>PSA</th><th>Distress</th><th>MUSIC</th><th>MD</th><th>APP</th><th>Sex Hlth</th><th>Local</th></tr>
+<tr><td>NP Appt</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>6-8wk Post-Op</td><td>No PSA</td><td>&#10003;</td><td>&#10003;</td><td></td><td>&#10003;</td><td>&#10003;</td><td></td></tr>
+<tr><td>3-4 months</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td></td><td></td><td></td></tr>
+<tr><td>9 months</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td></td><td>&#10003;</td><td></td><td></td></tr>
+<tr><td>Years 1-3</td><td>Annual</td><td>&#10003;</td><td>&#10003;</td><td></td><td>&#10003;</td><td></td><td></td></tr>
+<tr><td>Years 3+</td><td>Annual</td><td></td><td></td><td></td><td></td><td></td><td>&#10003;</td></tr>
+</table></div>
+<div class="callout callout-tip"><strong>Transition</strong> to local urologist at 3 years (sooner at MD discretion), if possible.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Int-High Risk Schedule (GG3-5, T3-4, R1, LN+, M+)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="table-wrap"><table class="sched-table">
+<tr><th>Timeline</th><th>PSA</th><th>Distress</th><th>MUSIC</th><th>MD</th><th>APP</th><th>Sex Hlth</th><th>Local</th></tr>
+<tr><td>NP Appt</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>6-8wk Post-Op</td><td>No PSA</td><td>&#10003;</td><td>&#10003;</td><td></td><td>&#10003;</td><td>&#10003;</td><td></td></tr>
+<tr><td>3mo-2yr</td><td>Q3mo</td><td>&#10003;</td><td>&#10003;</td><td>Q6mo</td><td></td><td></td><td></td></tr>
+<tr><td>Years 3-5</td><td>Q6mo</td><td>&#10003;</td><td></td><td>Q6mo</td><td></td><td></td><td></td></tr>
+<tr><td>Years 5+</td><td>Annual</td><td></td><td></td><td>Annual</td><td></td><td></td><td>&#10003;</td></tr>
+</table></div>
+<div class="callout callout-warn"><strong>Important:</strong> Keep patients in Michigan Medicine system. Transition to local only at MD discretion.</div>
+</div></div></div>
+</div><!-- end p-surv -->
+
+<!-- Additional Therapy -->
+<div class="section-group" data-section="p-ther" id="p-ther">
+<div class="section-head bg-prostate"><span class="icon">&#x1F4CA;</span> Additional Therapy / PSA States</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Post-RP Disease States (Lane&hellip;Borza; Eur Urol 2024)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Undetectable PSA &mdash; Favorable Pathology</h4><ul><li><strong>Tx:</strong> Surveillance</li></ul></div>
+<div class="risk-card rc-mid"><h4>Undetectable PSA &mdash; Concerning Path (pN+, ISUP GG4-5 AND pT3b-4 &plusmn; positive margin)</h4><ul><li><strong>Tx:</strong> Surveillance or adjuvant therapy</li></ul></div>
+<div class="risk-card rc-mid"><h4>PSA Persistence &mdash; Favorable Path, No radiographic disease</h4><ul><li><strong>Tx:</strong> Surveillance or consolidative therapy</li></ul></div>
+<div class="risk-card rc-high"><h4>PSA Persistence &mdash; Concerning Path (pN+, pT3-4, ISUP GG3-5, radiographic disease)</h4><ul><li><strong>Tx:</strong> Consolidative therapy</li></ul></div>
+<div class="risk-card rc-mid"><h4>PSA Recurrence (undetectable &rarr; detectable PSA)</h4><ul><li><strong>Tx:</strong> Salvage therapy (early) or surveillance</li></ul></div>
+<div class="risk-card rc-high"><h4>Metastatic Disease</h4><ul><li><strong>Tx:</strong> Management of metastatic prostate cancer</li></ul></div>
+</div></div></div>
+</div><!-- end p-ther -->
+
+<!-- Germline Genetics -->
+<div class="section-group" data-section="p-gen" id="p-gen">
+<div class="section-head bg-prostate-surv"><span class="icon">&#x1F9EC;</span> Germline Genetic Testing</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Indications for Germline Testing<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<p class="intro-text">Offer germline testing to prostate cancer patients who have:</p>
+<ul>
+<li>Positive family history of prostate cancer or related cancers</li>
+<li>Personal history of breast cancer</li>
+<li>Ashkenazi Jewish ancestry</li>
+<li>GG 4/5 disease</li>
+<li>Metastases (regional or distant)</li>
+<li>GG 2/3 with cribriform/intraductal pathology</li>
+<li>Personal history of: pancreatic, breast, colorectal, gastric cancer, melanoma, UTUC, glioblastoma, biliary tract, or small intestinal cancer</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Pre-Test Counseling &amp; Consent<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="callout callout-warn"><strong>Required:</strong> Spend a few minutes on pre-test education with patients and obtain signed Michigan Medicine consent (state law in Michigan). The consent PDF is embedded in the order set, and printed copies are also available in the Cancer Center clinic.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Financial Assistance<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="callout callout-tip"><strong>Encourage all patients to apply for financial assistance</strong>, even if they expect insurance coverage. This can reduce copays and deductibles. Out-of-pocket costs are generally capped at around $300, and in most cases there is no OOP cost.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Ordering &amp; Specimen Collection<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<ul>
+<li><strong>Blood draws</strong> can be done at U of M labs or via mobile phlebotomy. Choose one of these options when placing the order (search <strong>&ldquo;Tempus xG&rdquo;</strong> in MiChart).</li>
+<li><strong>Saliva</strong> is also an option if the patient lives far away and mobile phlebotomy is not feasible &mdash; a kit will be mailed to them.</li>
+</ul>
+<p class="sub-heading">MiChart Order Reference: Tempus xG Cancer and Next RNAinsight</p>
+<div style="border:2px solid var(--border);border-radius:var(--rad-sm);overflow:hidden;margin:10px 0;background:#f8fafc;">
+<div style="background:#3a6ea5;color:#fff;font-size:12px;font-weight:600;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">Tempus xG Cancer and Next RNAinsight<span style="font-size:11px;opacity:.8;">&#10003; Accept</span></div>
+<div style="padding:14px;font-size:13px;line-height:1.7;color:var(--text-sec);">
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Consent signed?</span> <span style="background:#3a6ea5;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Yes</span> <span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;">No</span></div>
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Obtained and Explained by:</span> <span style="border:1px solid var(--border);padding:3px 8px;border-radius:4px;display:inline-block;min-width:180px;background:#fff;font-size:12px;">Todd Morgan</span></div>
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Release to patient portal:</span> <span style="background:#3a6ea5;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Immediate</span> <span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;">90 Day</span></div>
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Select a germline panel for RNA testing:</span><br>
+<span style="background:#3a6ea5;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600;display:inline-block;margin:4px 4px 0 0;">xG RNA (CancerNext) - 36 genes</span>
+<span style="background:#e2e6ea;padding:3px 10px;border-radius:4px;font-size:11px;display:inline-block;margin:4px 0 0 0;">xG+ RNA (CancerNext-Expanded) - 77 genes</span></div>
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Specimen type:</span>
+<span style="background:#3a6ea5;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Blood</span>
+<span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;">Saliva</span>
+<span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;">Skin Punch</span></div>
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Who is collecting the blood specimen?</span><br>
+<span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;display:inline-block;margin:4px 4px 0 0;">Nurse</span>
+<span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;display:inline-block;margin:4px 4px 0 0;">Phlebotomist</span>
+<span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;display:inline-block;margin:4px 0 0 0;">Mobile Phlebotomist (Tempus)</span></div>
+</div>
+</div>
+<div class="callout callout-info"><strong>Tip:</strong> Search <strong>&ldquo;Tempus xG&rdquo;</strong> in MiChart to find this order. Select Blood &rarr; Nurse or Phlebotomist (U of M labs) or Mobile Phlebotomist (Tempus) for collection.</div>
+</div></div></div>
+</div><!-- end p-gen -->
+</div><!-- end prostate -->
+
+
+<!-- ======================================== -->
+<!--            KIDNEY CANCER                 -->
+<!-- ======================================== -->
+<div class="pathway" data-pathway="kidney" style="display:none">
+
+<!-- Intake -->
+<div class="section-group" data-section="k-intake" id="k-intake">
+<div class="section-head bg-kidney"><span class="icon">&#x1F4CB;</span> Intake &amp; Initial Workup</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Referral Stratification<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>&ge;4 cm:</strong> Expedited visit in cancer center with urologic oncologist</li>
+<li><strong>&lt;4 cm:</strong> General intake; general urology or Ghani small renal mass clinic</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Pre-Visit Records<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Notes from referring physician</li>
+<li><strong>Imaging:</strong> Most recent cross-sectional abd/renal (CT/MRI) and chest (CT/CXR) within 12 months; archive images</li>
+</ul>
+<div class="callout callout-warn"><strong>Important:</strong> Images MUST be submitted to archive, not just LifeImage &mdash; purged after a short period.</div>
+<ul>
+<li><strong>Interpretation:</strong> Submit most recent cross-sectional if within 3 months</li>
+<li><strong>Pathology:</strong> Obtain slides for biopsy/prior removal at outside facility within 12 months; slides for any urothelial cancer diagnosis</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">NP Visit<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>UA for proteinuria and hematuria</li>
+<li>Recent CMP and CBC</li>
+<li>Urine cytology if UCC on differential</li>
+<li>MSHOP materials at surgeon discretion (Modifier 22 for BCBS)</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Genetics &amp; Additional Evaluations<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<p class="sub-heading">Genetics Evaluation if:</p>
+<ul>
+<li>&le;46 years old</li>
+<li>Bilateral or multiple tumors</li>
+<li>1+ 1st/2nd-degree relatives with RCC</li>
+<li>Multifocal papillary (HPRC)</li>
+<li>HLRCC-associated RCC</li>
+<li>BHD-related histology</li>
+<li>AML + 1 other TSCC feature</li>
+<li>SDH-deficient RCC</li>
+</ul>
+<p class="sub-heading">Nephrology Referral if:</p>
+<ul>
+<li>Post-treatment GFR likely &le;30</li>
+<li>GFR &le;45, confirmed proteinuria, or diabetics with CKD</li>
+</ul>
+<p class="sub-heading">Renal Mass Biopsy:</p>
+<ul>
+<li>If will influence decision; NOT clear surveillance candidate</li>
+<li>Consider for significant comorbidities or CKD risk</li>
+</ul>
+<p class="sub-heading">Staging Imaging:</p>
+<ul>
+<li>CT chest for T1b+</li>
+<li>Bone scan if: elevated alk phos, CT signs of mets, symptoms</li>
+<li>Brain imaging if: neuro symptoms, high-risk tumors</li>
+</ul></div></div></div>
+</div><!-- end k-intake -->
+
+<!-- Pre-Operative -->
+<div class="section-group" data-section="k-preop" id="k-preop">
+<div class="section-head bg-kidney"><span class="icon">&#x1FA7A;</span> Pre-Operative</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Pre-Op Eval &amp; Labs<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Local pre-op H&P option if &gt;1hr away; MSHOP referral for BCBS</li>
+<li><strong>Labs:</strong> CBC, CMP (GFR), Type &amp; Screen, UA w/ reflex culture</li>
+<li>Bowel prep: 24hr clears; pregnancy test PRN</li>
+<li>Case requests: ESAS tier HIGH; EKG and clearances as indicated</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Imaging &amp; Surgical Timeline<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Chest imaging for T1b+ within 6 months</li>
+<li><strong>Cross-sectional:</strong> Within 3mo (standard risk), 1&ndash;2mo (large/high risk), 2&ndash;4wk (IVC thrombus)</li>
+<li><strong>Timeline:</strong> 2mo low risk; 1mo high risk; 1wk IVC</li>
+<li><strong>Abx:</strong> Ancef (robotic/MIS); Cefoxitin (IVC); Clinda+Gent if allergy</li>
+<li><strong>Anticoag:</strong> SQ Heparin for all (exception: Dr. Kaffenberger&rsquo;s partials)</li>
+<li><strong>Blocks:</strong> QL block for all except IVC (in pre-op or PACU); intrathecal opioid option for open</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">IVC Thrombectomy Exceptions<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Possible/likely pre-admit; T&amp;C 2 pRBCs in fridge</li>
+</ul>
+<div class="callout callout-warn"><strong>Email</strong> UroIVCThrombus@med.umich.edu ahead of time for anesthesia/perfusion readiness.</div>
+<ul>
+<li><strong>Inpatient imaging:</strong> MRI abd, Chest CT, possible brain MRI</li>
+<li><strong>Circ arrest:</strong> CVC coordination; TTE/TEE &plusmn; cardiac cath prior</li>
+<li><strong>Post-op:</strong> SICU (or CVICU if circ arrest)</li>
+</ul></div></div></div>
+</div><!-- end k-preop -->
+
+<!-- Intraoperative -->
+<div class="section-group" data-section="k-intraop" id="k-intraop">
+<div class="section-head bg-kidney"><span class="icon">&#x1FA7A;</span> Intraoperative</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Intraoperative Protocol<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>OG tube; Foley (size/type at surgeon discretion)</li>
+<li><strong>Nephroureterectomy:</strong> Order intra-op gemcitabine in case request; must be in room day of surgery</li>
+</ul></div></div></div>
+</div><!-- end k-intraop -->
+
+<!-- Post-Op Protocols -->
+<div class="section-group" data-section="k-postop" id="k-postop">
+<div class="section-head bg-kidney"><span class="icon">&#x1F3E5;</span> Post-Op Protocols</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Lap/Robot Nephrectomy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="callout callout-warn"><strong>Note:</strong> Lap/Endo service radical and partial do NOT get SQH; Onc service gets SQH.</div>
+<div class="table-wrap"><table class="proto-table">
+<tr><th>POD</th><th>Pain</th><th>Diet</th><th>Drains</th><th>Meds</th><th>Activity</th><th>Prophy</th><th>Labs</th></tr>
+<tr><td class="row-label">POD 0</td><td>IV Tylenol + Tramadol/Oxy</td><td>Clear liquid</td><td>Rad: Foley<br>Part: &plusmn;JP, Foley</td><td>Abx x24hr</td><td>OOB to chair</td><td>SCDs SQH TID</td><td>None in PACU</td></tr>
+<tr><td class="row-label">POD 1<br>(D/C day)</td><td>PO Tylenol + Tramadol/Oxy; Toradol after Cr</td><td>CLD &plusmn;ADAT</td><td>Rad: D/C Foley<br>Part: D/C Foley</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCDs SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
+<tr><td class="row-label">POD 2 PN<br>(D/C day)</td><td>PO Tylenol + Tramadol/Oxy</td><td>Regular</td><td>Part: D/C Foley, JP if low output (&gt;4hr post-Foley); &plusmn;JP Cr</td><td>D/C: PO pain, Colace/Miralax; opioid limit if &lt;6 tabs</td><td>As above</td><td>SCDs SQH TID</td><td>No labs D/C day</td></tr>
+</table></div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Open Nephrectomy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="table-wrap"><table class="proto-table">
+<tr><th>POD</th><th>Pain</th><th>Diet</th><th>Drains</th><th>Meds</th><th>Activity</th><th>Prophy</th><th>Labs</th></tr>
+<tr><td class="row-label">POD 0</td><td>IV Tylenol + Oxy</td><td>Clear liquid</td><td>Rad: Foley<br>Part: &plusmn;JP, Foley</td><td>Abx x24hr</td><td>OOB to chair</td><td>SCDs SQH TID</td><td>None in PACU</td></tr>
+<tr><td class="row-label">POD 1<br>(D/C day)</td><td>IV/PO Tylenol + Oxy; Toradol after Cr</td><td>CLD &plusmn;advance to regular</td><td>Rad: D/C Foley<br>Part: per attending</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
+<tr><td class="row-label">POD 2+ until D/C</td><td>PO Tylenol + Oxy</td><td>Regular</td><td>Part: D/C Foley, JP if low output; &plusmn;JP Cr</td><td>D/C: PO pain, Colace/Miralax; opioid limit</td><td>As above</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos; no labs D/C day</td></tr>
+</table></div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Nephroureterectomy &amp; Outpatient Follow-up<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<p class="sub-heading">Nephroureterectomy:</p>
+<ul>
+<li>Send JP Cr prior to removal; home with Foley</li>
+<li>Single dose abx at Foley removal; no cystogram unless surgeon specifies</li>
+</ul>
+<p class="sub-heading">All MIS Partial &amp; Radical:</p>
+<ul>
+<li>Video visit 1&ndash;2 wk for pathology (per surgeon); BMP/CBC in prep</li>
+</ul>
+<p class="sub-heading">Nephroureterectomy:</p>
+<ul>
+<li>Catheter pull 7&ndash;10 days; CMP/CBC at 7&ndash;10 days</li>
+</ul>
+<p class="sub-heading">Adjuvant Referrals:</p>
+<ul>
+<li><strong>ccRCC:</strong> Med onc for pembro if Grade 4, sarcomatoid, pT3+, N1, M1 NED; ASSURE nomogram</li>
+<li><strong>Non-ccRCC:</strong> No adjuvant</li>
+<li><strong>UTUC:</strong> Med onc for pT3/pT4/pN+ (no NAC) or ypT2-4/ypN+ (post-NAC)</li>
+</ul>
+<div class="callout callout-info">Discuss genetics if indicated. May omit 6-wk NP/PA if 1&ndash;2wk virtual done. Open: in-person only if staples for wound check.</div>
+</div></div></div>
+</div><!-- end k-postop -->
+
+<!-- Post-Nephrectomy Surveillance -->
+<div class="section-group" data-section="k-surv" id="k-surv">
+<div class="section-head bg-kidney-surv"><span class="icon">&#x1F4C5;</span> Post-Nephrectomy Surveillance</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Low-Risk Stage I (T1)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Optional 6-month post-op imaging for baseline</li>
+<li>CBC, BMP yearly to 5 years; clinically indicated after</li>
+<li>Cross-sectional imaging annually, sparing ultrasound use</li>
+<li>CT chest only if baseline findings need follow-up</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">High-Risk Surveillance<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>Cadence:</strong> Q3 (VHR) or Q6 (HR) mo yr 1; Q6mo to yr 3; annually to yr 5; then clinically indicated</li>
+<li>CMP, CBC; abdominal CT or MRI</li>
+<li><strong>Chest CT:</strong> Baseline 3&ndash;6mo; Q6mo for &ge;3yr; annually to 5yr</li>
+<li>Beyond 5yr: per individual characteristics and tumor risk</li>
+<li>Additional imaging (bone scan, brain) as symptoms warrant</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Familial RCC &amp; Graduation<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<ul>
+<li><strong>VHL:</strong> Yearly metanephrine, yearly cross-sectional imaging, refer for systemic therapy</li>
+<li><strong>BHD:</strong> Chest imaging or referral to pulmonology</li>
+</ul>
+<p class="sub-heading">Graduation from Surveillance:</p>
+<div class="risk-card rc-low"><h4>Low/Int Risk RCC</h4><ul><li>Standard: 10yr (Q2yr after 5yr)</li><li>Young/multifocal: 10yr or longer</li></ul></div>
+<div class="risk-card rc-high"><h4>High/Very High Risk RCC</h4><ul><li>Standard: 10yr (Q2yr after 5yr)</li><li>Young/multifocal: 10yr or longer</li></ul></div>
+<div class="risk-card rc-high"><h4>Familial RCC</h4><ul><li>Lifelong</li></ul></div>
+<div class="risk-card rc-mid"><h4>pT0/pT1 UCC</h4><ul><li>Cysto 5yr (low risk) or 10yr (high risk)</li></ul></div>
+<div class="risk-card rc-mid"><h4>pT2-4, N+</h4><ul><li>Cysto for 10 years</li></ul></div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Thermal Ablation Follow-up<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>LR:</strong> pT1, Grade 1/2</li>
+<li><strong>IR:</strong> pT1 Grade 3/4 or pT2</li>
+<li><strong>HR:</strong> pT3</li>
+<li><strong>VHR:</strong> pT4, pN1, sarcomatoid/rhabdoid, or macroscopic positive margin</li>
+</ul>
+<div class="callout callout-info">Positive microscopic margins: consider at least one risk level higher. Post-ablation: pre/post-contrast imaging within 6 months; then follow IR protocol.</div>
+</div></div></div>
+</div><!-- end k-surv -->
+
+<!-- UTUC -->
+<div class="section-group" data-section="k-utuc" id="k-utuc">
+<div class="section-head bg-kidney-surv"><span class="icon">&#x1F50D;</span> UTUC Follow-up</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">UTUC Classification<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Low-Risk UTUC (ALL must be present)</h4><ul><li>Unifocal, &lt;2cm, negative high-grade cytology, low-grade URS biopsy, no invasive aspect on CT</li></ul></div>
+<div class="risk-card rc-high"><h4>High-Risk &mdash; Strong Criteria (ANY present)</h4><ul><li>High-grade cytology, high-grade URS biopsy, local invasion on CT, histological subtype</li></ul></div>
+<div class="risk-card rc-mid"><h4>Weak Criteria (low-grade; not strong predictors)</h4><ul><li>Multifocal, &ge;2cm, hydronephrosis</li></ul></div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Post-Nephroureterectomy Follow-up<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Low-Risk (solitary, non-invasive, low grade)</h4><ul><li>Cysto at 3mo, 9mo, then yearly x 5yr</li></ul></div>
+<div class="risk-card rc-mid"><h4>High-Risk pT0/pT1 or ypT0/pT1</h4><ul><li>Cysto/cytology Q3mo x 2yr, Q6mo to 5yr, then yearly</li><li>Cross-sectional + CT chest Q6mo x 2yr, then yearly</li></ul></div>
+<div class="risk-card rc-high"><h4>pT3/pT4/pN+ or ypT2-4/N+ &mdash; Refer Med Onc</h4><ul><li>Cysto/cyto as above; other imaging per med onc</li></ul></div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">After Radical Nephroureterectomy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Low-Risk Tumours</h4><ul><li>Cysto at 3mo; if negative, 9mo later, then yearly for 5yr</li></ul></div>
+<div class="risk-card rc-high"><h4>High-Risk Tumours</h4><ul><li>Cysto + cytology at 3mo; if negative, Q3mo x 2yr, Q6mo to 5yr, then yearly</li><li>CT urography + chest CT Q6mo x 2yr, then yearly</li></ul></div>
+<div class="callout callout-info"><strong>Urethral Wash:</strong> Consider strongly for CIS or prostatic/urethral disease history.</div>
+</div></div></div>
+</div><!-- end k-utuc -->
+</div><!-- end kidney -->
+
+<div class="no-results" id="noResults" style="display:none">No results found. Try a different search term.</div>
+<div class="footer">Updated January 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
+</div><!-- end content-area -->
+
+<!-- ===== QR MODAL ===== -->
+<div class="modal-overlay" id="qrModal">
+  <div class="modal-box">
+    <h2>Share This Pathway</h2>
+    <p>Scan with your phone camera to open</p>
+    <canvas id="qrCanvas"></canvas>
+    <input class="modal-url" id="urlDisplay" readonly>
+    <br>
+    <button class="modal-close" onclick="hideQR()">Done</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
+// Pathway configuration
+const pathwayConfig = {
+  bladder: {
+    sections: ['nmibc', 'b-preop', 'b-intraop', 'b-postop', 'b-surv'],
+    labels: ['NMIBC', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance']
+  },
+  prostate: {
+    sections: ['p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-ther', 'p-gen'],
+    labels: ['Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'Therapy', 'Genetics']
+  },
+  kidney: {
+    sections: ['k-intake', 'k-preop', 'k-intraop', 'k-postop', 'k-surv', 'k-utuc'],
+    labels: ['Intake', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance', 'UTUC']
+  }
+};
+
+let activePathway = 'bladder';
+
+// Build navigation tabs
+function buildNav(pathway) {
+  const nav = document.getElementById('sectionNav');
+  const config = pathwayConfig[pathway];
+  nav.innerHTML = config.sections.map((id, i) =>
+    '<button class="nav-tab' + (i === 0 ? ' active' : '') + '" onclick="scrollToSection(\'' + id + '\', this)">' + config.labels[i] + '</button>'
+  ).join('');
+}
+
+// Select pathway
+function selectPathway(chip) {
+  if (chip.classList.contains('coming-soon')) return;
+
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+
+  const pw = chip.dataset.pw;
+  activePathway = pw;
+
+  document.querySelectorAll('.pathway').forEach(el => el.style.display = 'none');
+  const target = document.querySelector('.pathway[data-pathway="' + pw + '"]');
+  if (target) target.style.display = '';
+
+  buildNav(pw);
+  document.querySelector('.search-input').value = '';
+  doSearch('');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Toggle accordion
+function toggleCard(btn) {
+  btn.parentElement.classList.toggle('open');
+}
+
+// Scroll to section
+function scrollToSection(id, tab) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  if (tab) tab.classList.add('active');
+  const el = document.getElementById(id);
+  if (el) {
+    const offset = el.getBoundingClientRect().top + window.pageYOffset - 130;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  }
+}
+
+// Search
+function doSearch(query) {
+  query = query.toLowerCase().trim();
+  const pw = document.querySelector('.pathway[data-pathway="' + activePathway + '"]');
+  if (!pw) return;
+
+  const cards = pw.querySelectorAll('.card');
+  const sections = pw.querySelectorAll('.section-group');
+  const noResults = document.getElementById('noResults');
+
+  // Remove existing highlights
+  document.querySelectorAll('mark').forEach(m => {
+    m.replaceWith(document.createTextNode(m.textContent));
+  });
+
+  if (!query) {
+    sections.forEach(s => s.style.display = '');
+    cards.forEach(c => c.style.display = '');
+    noResults.style.display = 'none';
+    return;
+  }
+
+  let anyMatch = false;
+  sections.forEach(sec => {
+    let sectionVisible = false;
+    sec.querySelectorAll('.card').forEach(card => {
+      if (card.textContent.toLowerCase().includes(query)) {
+        card.style.display = '';
+        card.classList.add('open');
+        sectionVisible = true;
+        anyMatch = true;
+        highlightText(card.querySelector('.card-content'), query);
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    sec.style.display = sectionVisible ? '' : 'none';
+  });
+
+  noResults.style.display = anyMatch ? 'none' : 'block';
+}
+
+function highlightText(container, query) {
+  if (!container) return;
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    const idx = node.textContent.toLowerCase().indexOf(query);
+    if (idx >= 0) {
+      const mark = document.createElement('mark');
+      mark.textContent = node.textContent.substring(idx, idx + query.length);
+      const after = node.splitText(idx);
+      after.textContent = after.textContent.substring(query.length);
+      node.parentNode.insertBefore(mark, after);
+    }
+  });
+}
+
+// QR Code
+function showQR() {
+  document.getElementById('qrModal').classList.add('show');
+  const url = window.location.href;
+  document.getElementById('urlDisplay').value = url;
+  new QRious({
+    element: document.getElementById('qrCanvas'),
+    value: url,
+    size: 200,
+    backgroundAlpha: 1,
+    foreground: '#0C2340',
+    level: 'M'
+  });
+}
+
+function hideQR() {
+  document.getElementById('qrModal').classList.remove('show');
+}
+
+document.getElementById('qrModal').addEventListener('click', function(e) {
+  if (e.target === this) hideQR();
+});
+
+// Scroll spy
+window.addEventListener('scroll', function() {
+  const config = pathwayConfig[activePathway];
+  const tabs = document.querySelectorAll('.nav-tab');
+  let current = config.sections[0];
+
+  config.sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 160) current = id;
+  });
+
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle('active', config.sections[i] === current);
+  });
+});
+
+// Initialize
+buildNav('bladder');
+</script>
+</body>
+</html>
