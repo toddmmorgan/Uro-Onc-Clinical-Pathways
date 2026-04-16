@@ -691,7 +691,7 @@ mark {
 <li><strong>5000 units SQ heparin</strong> post induction</li>
 <li>OG tube &mdash; remove at extubation</li>
 <li>Core temp <strong>&gt;36&deg;C</strong></li>
-<li><strong>IVF:</strong> 3 cc/kg/hr; SPV and PPV directed; vasopressor and 250cc boluses for hemodynamic goals</li>
+<li><strong>IVF:</strong> Goal-directed fluid management &mdash; balanced approach guided by hemodynamic parameters, avoiding both under-resuscitation and over-resuscitation</li>
 <li><strong>Abx:</strong> Re-dose per guidelines (Cefoxitin: 1g &lt;80kg; 2g &ge;80kg)</li>
 <li><strong>Acetaminophen:</strong> 1000mg IV prior to emergence (if &ge;6hrs after preop dose)</li>
 <li><strong>Transfuse:</strong> Hct &lt;21% no CAD; &lt;24% with CAD</li>
@@ -804,14 +804,16 @@ mark {
 <div class="section-head bg-prostate"><span class="icon">&#x1FA7A;</span> Perioperative Care</div>
 
 <div class="card open"><button class="card-head" onclick="toggleCard(this)">Pre-Op Day &amp; Intraoperative<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li><strong>Bowel Prep:</strong> Clear liquids x 24hr (no enema)</li>
-<li><strong>NPO:</strong> 4 hours prior</li>
+<li><strong>Diet:</strong> No solid food 8 hours prior to surgery; clear fluids up to 2 hours prior; no bowel prep</li>
 <li>Type &amp; Screen in AM</li>
 <li><strong>Abx:</strong> Cefazolin (alt: Clindamycin/Gentamicin) after induction</li>
 <li><strong>DVT:</strong> SQH + SCDs for all patients</li>
 <li><strong>Intra-op:</strong> OG tube; limit IVF to 2L for entire case; administer local analgesia</li>
 <li><strong>Post-PACU:</strong> No PACU labs unless otherwise indicated</li>
-</ul></div></div></div>
+</ul>
+<div class="callout callout-warn"><strong>Pre-Op Clinic Note:</strong> Pre-op clinic may distribute outdated diet and perioperative instructions. Use Simpa&rsquo;s prostatectomy case request. If requesting something different from pathway, specify in comments or it may not happen.</div>
+<div class="callout callout-info"><strong>No pre-op visit?</strong> We are responsible for medication instructions (anticoagulation, GLPs, etc.).</div>
+</div></div></div>
 </div><!-- end p-periop -->
 
 <!-- Postoperative -->
@@ -844,7 +846,8 @@ mark {
 </ul>
 <div class="callout callout-warn"><strong>Important:</strong> Catheter questions should be directed straight to University of Michigan Urology.</div>
 <ul>
-<li><strong>Follow-up:</strong> Nursing call 1&ndash;2 days; Nursing visit 5&ndash;7 days (catheter removal); Survivorship 6&ndash;8 wk; MD 3&ndash;4 mo</li>
+<li><strong>Foley removal:</strong> 5&ndash;7 days standard; <strong>7&ndash;10 days for Hollenbeck</strong> (extraperitoneal approach)</li>
+<li><strong>Follow-up:</strong> Nursing call 1&ndash;2 days; Nursing visit at catheter removal; Survivorship 6&ndash;8 wk; MD 3&ndash;4 mo</li>
 </ul></div></div></div>
 </div><!-- end p-postop -->
 
@@ -897,6 +900,26 @@ mark {
 <div class="risk-card rc-high"><h4>Metastatic Disease</h4><ul><li><strong>Tx:</strong> Management of metastatic prostate cancer</li></ul></div>
 </div></div></div>
 </div><!-- end p-ther -->
+
+<!-- Watchful Waiting -->
+<div class="section-group" data-section="p-ww" id="p-ww">
+<div class="section-head bg-prostate-surv"><span class="icon">&#x1F440;</span> Watchful Waiting</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Watchful Waiting (High-Risk Setting)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-mid"><h4>Preferred Candidate</h4><ul>
+<li>Asymptomatic patients</li>
+<li>Life expectancy &lt;5 years</li>
+</ul></div>
+<p class="sub-heading">Observation Protocol (NCCN)</p>
+<ul>
+<li>H&amp;P no more than yearly</li>
+<li>No routine imaging</li>
+<li>No routine lab testing</li>
+<li>Intervention triggered by symptom development or anticipated imminence</li>
+</ul>
+<div class="callout callout-info"><strong>Life expectancy &gt;5 years</strong> preferring observation: Any lab testing or imaging should be individualized according to patient goals of care (NCCN).</div>
+</div></div></div>
+</div><!-- end p-ww -->
 
 <!-- Germline Genetics -->
 <div class="section-group" data-section="p-gen" id="p-gen">
@@ -1021,7 +1044,8 @@ mark {
 <div class="card open"><button class="card-head" onclick="toggleCard(this)">Pre-Op Eval &amp; Labs<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
 <li>Local pre-op H&P option if &gt;1hr away; MSHOP referral for BCBS</li>
 <li><strong>Labs:</strong> CBC, CMP (GFR), Type &amp; Screen, UA w/ reflex culture</li>
-<li>Bowel prep: 24hr clears; pregnancy test PRN</li>
+<li><strong>Diet:</strong> No solid food 8 hours prior to surgery; clear fluids up to 2 hours prior; no bowel prep</li>
+<li>Pregnancy test PRN</li>
 <li>Case requests: ESAS tier HIGH; EKG and clearances as indicated</li>
 </ul></div></div></div>
 
@@ -1161,10 +1185,38 @@ mark {
 </div></div></div>
 
 </div><!-- end k-utuc -->
+
+<!-- AML -->
+<div class="section-group" data-section="k-aml" id="k-aml">
+<div class="section-head bg-kidney"><span class="icon">&#x1F9EC;</span> Angiomyolipoma (AML)</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">AML Surveillance &amp; Intervention<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<p class="sub-heading">Surveillance</p>
+<div class="risk-card rc-low"><h4>&lt;2 cm</h4><ul><li>No follow-up required if stable for 1&ndash;2 years</li></ul></div>
+<div class="risk-card rc-mid"><h4>&ge;2 cm</h4><ul><li>Imaging every 1&ndash;2 years</li></ul></div>
+<div class="callout callout-info"><strong>Women of childbearing age:</strong> Consider intervention at &gt;4 cm threshold due to increased bleeding risk in pregnancy.</div>
+
+<p class="sub-heading">Angioembolization &mdash; Consider if:</p>
+<ul>
+<li>Symptomatic</li>
+<li>Rapid growth</li>
+<li>TSC-associated</li>
+<li>Size &gt;6 cm</li>
+</ul>
+
+<p class="sub-heading">mTOR Inhibitor Therapy</p>
+<ul>
+<li>Consider for TSC-associated AML</li>
+</ul>
+
+<div class="callout callout-warn"><strong>Epithelioid AML:</strong> Generally require radical or partial nephrectomy given malignant potential.</div>
+</div></div></div>
+</div><!-- end k-aml -->
+
 </div><!-- end kidney -->
 
 <div class="no-results" id="noResults" style="display:none">No results found. Try a different search term.</div>
-<div class="footer">Updated January 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
+<div class="footer">Updated April 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
 </div><!-- end content-area -->
 
 <!-- ===== QR MODAL ===== -->
@@ -1188,12 +1240,12 @@ const pathwayConfig = {
     labels: ['NMIBC', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance']
   },
   prostate: {
-    sections: ['p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-ther', 'p-gen'],
-    labels: ['Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'Therapy', 'Genetics']
+    sections: ['p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-ther', 'p-ww', 'p-gen'],
+    labels: ['Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'Therapy', 'Watchful Waiting', 'Genetics']
   },
   kidney: {
-    sections: ['k-intake', 'k-preop', 'k-intraop', 'k-postop', 'k-surv', 'k-utuc'],
-    labels: ['Intake', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance', 'UTUC']
+    sections: ['k-intake', 'k-preop', 'k-intraop', 'k-postop', 'k-surv', 'k-utuc', 'k-aml'],
+    labels: ['Intake', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance', 'UTUC', 'AML']
   }
 };
 
