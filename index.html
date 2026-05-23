@@ -146,11 +146,6 @@ body {
   border-color: var(--navy);
   box-shadow: 0 2px 8px rgba(12,35,64,.3);
 }
-.chip.coming-soon {
-  opacity: .4;
-  cursor: default;
-  font-style: italic;
-}
 
 /* ========== SEARCH ========== */
 .search-wrap {
@@ -435,6 +430,60 @@ body {
 .sched-table tr:nth-child(even) { background: #f8fafc; }
 .sched-table tr:last-child td { border-bottom: none; }
 
+/* ========== FLOWCHART ========== */
+.flow-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 14px 0;
+  padding: 4px 0;
+}
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: max-content;
+  padding: 8px 4px;
+}
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-sec);
+  min-width: 80px;
+  max-width: 110px;
+}
+.flow-step .flow-icon { font-size: 22px; margin-bottom: 4px; }
+.flow-step .flow-label { font-weight: 600; color: var(--text); font-size: 11px; line-height: 1.3; }
+.flow-step .flow-sub { font-size: 10px; color: var(--text-muted); line-height: 1.2; margin-top: 2px; }
+.flow-arr { color: var(--teal); font-size: 20px; font-weight: 700; padding: 0 6px; flex-shrink: 0; }
+.flow-box {
+  border: 2px solid var(--red);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red);
+  text-align: center;
+  white-space: nowrap;
+}
+.flow-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.flow-branch-label {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.flow-branch-label.pos { background: var(--red-bg); color: var(--red); }
+.flow-branch-label.neg { background: var(--green-bg); color: var(--green); }
+
 /* ========== INLINE LABELS ========== */
 .sub-heading {
   font-size: 13px;
@@ -525,9 +574,6 @@ mark {
   transition: background var(--transition);
 }
 .modal-close:hover { background: var(--navy-light); }
-
-/* ========== PATHWAY VISIBILITY ========== */
-.pathway { /* shown by default for active pathway */ }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 480px) {
@@ -773,75 +819,6 @@ mark {
 <!-- ======================================== -->
 <div class="pathway" data-pathway="prostate" style="display:none">
 
-<!-- Active Surveillance -->
-<div class="section-group" data-section="p-as" id="p-as">
-<div class="section-head bg-prostate-surv"><span class="icon">&#x1F50D;</span> Active Surveillance</div>
-
-<div class="card open"><button class="card-head" onclick="toggleCard(this)">Eligibility<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<div class="risk-card rc-low"><h4>Low-Risk Prostate Cancer</h4><ul>
-<li>Active surveillance is the <strong>preferred management approach</strong></li>
-</ul></div>
-<div class="risk-card rc-mid"><h4>Favorable Intermediate-Risk</h4><ul>
-<li>Many patients can be safely managed with active surveillance</li>
-</ul></div>
-<p class="sub-heading">Features Suggesting AS Eligibility in Favorable Intermediate-Risk</p>
-<div class="table-wrap"><table class="proto-table">
-<tr><th>Feature</th><th>Criteria</th></tr>
-<tr><td>Cancer volume</td><td>&le;3 cores</td></tr>
-<tr><td>Gleason Pattern 4</td><td>&le;20%</td></tr>
-<tr><td>Pathology features</td><td>No cribriform pattern or intraductal carcinoma</td></tr>
-<tr><td>PSA Density (volume per MRI)</td><td>&lt;0.15</td></tr>
-<tr><td>Genomic Classifier Risk (e.g., Prolaris, GPS, Decipher)</td><td>Low risk score</td></tr>
-</table></div>
-</div></div></div>
-
-<div class="card"><button class="card-head" onclick="toggleCard(this)">Diagnosis &amp; Confirmatory Testing<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<div class="risk-card rc-low"><h4>Primary Pathway</h4><ul>
-<li>MRI before initial biopsy (strongly recommended) &mdash; considered to have confirmatory test completed</li>
-</ul></div>
-<div class="risk-card rc-mid"><h4>Alternate Pathway (if no pre-biopsy MRI)</h4><ul>
-<li>Confirmatory testing required (MRI and/or repeat biopsy)</li>
-</ul></div>
-</div></div></div>
-
-<div class="card"><button class="card-head" onclick="toggleCard(this)">Surveillance Testing<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li><strong>PSA:</strong> Q6 months. If concern about a PSA rise, confirm with repeat PSA collected at least 1 month later.</li>
-<li><strong>MRI:</strong> Q18&ndash;24 months, or as clinically indicated (MD concern, rising PSA). Prefer bpMRI for surveillance MRIs after initial high-quality mpMRI.</li>
-<li><strong>Biopsy:</strong> Q18&ndash;36 months, or as clinically indicated (MD concern, rising PSA, significant MRI change).</li>
-<li><strong>Genomic testing:</strong> Not routinely used outside of clinical trial setting, but may be used in select patients.</li>
-</ul></div></div></div>
-
-<div class="card"><button class="card-head" onclick="toggleCard(this)">Provider Visits<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li><strong>APP visit</strong> Q6 months; PSA prior to APP visit &times;2, then MD visit &mdash; repeat cycle</li>
-<li><strong>MD visit</strong> Q18 months; bpMRI prior to visit. Biopsy per MD.</li>
-<li>MiChart discussion between APP and MD instead of MD visit may be appropriate for some patients beyond the 18-month follow-up period.</li>
-</ul></div></div></div>
-
-<div class="card"><button class="card-head" onclick="toggleCard(this)">Transition to Treatment<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li>Biopsy-confirmed disease <strong>grade progression/upgrading</strong></li>
-<li>May omit repeat biopsy in GG2 disease with concerning MRI, genomics, and/or PSA dynamics. However, consider that upgrading does impact use of ADT in patients undergoing radiation therapy.</li>
-<li>Always place in context of patient&rsquo;s overall health and survival.</li>
-</ul></div></div></div>
-
-<div class="card"><button class="card-head" onclick="toggleCard(this)">Surveillance Intensity Over Time<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<p class="sub-heading">Years 1&ndash;5: Standard Surveillance</p>
-<ul>
-<li>Continue PSA Q6mo, MRI Q18&ndash;24mo, biopsy Q18&ndash;36mo pathways as above</li>
-</ul>
-<p class="sub-heading">After ~5&ndash;6 Years: Consider De-escalation</p>
-<ul>
-<li>Next MD visit: discuss eligibility for <strong>testing de-escalation</strong> (repeat MRI and/or biopsy)</li>
-<li>Outline individualized follow-up plan in chart, then continue with APP</li>
-<li>Always evaluate for appropriateness to transition to <strong>low-intensity surveillance</strong> or <strong>watchful waiting</strong></li>
-</ul>
-<div class="risk-card rc-low"><h4>Low-Intensity Surveillance / Watchful Waiting</h4><ul>
-<li>Strongly recommended in patients with <strong>life expectancy &lt;10 years</strong></li>
-<li>PSA Q12 months; consider stopping PSA testing as indicated by cancer risk and life expectancy</li>
-<li>Typically no role for biopsy</li>
-</ul></div>
-</div></div></div>
-</div><!-- end p-as -->
-
 <!-- Preoperative -->
 <div class="section-group" data-section="p-preop" id="p-preop">
 <div class="section-head bg-prostate"><span class="icon">&#x1F4CB;</span> Preoperative Evaluation</div>
@@ -879,7 +856,8 @@ mark {
 <li><strong>DVT:</strong> SQH + SCDs for all patients</li>
 <li><strong>Intra-op:</strong> OG tube; limit IVF to 2L for entire case; administer local analgesia</li>
 <li><strong>Post-PACU:</strong> No PACU labs unless otherwise indicated</li>
-</ul><div class="callout callout-info"><strong>No pre-op visit?</strong> We are responsible for medication instructions (anticoagulation, GLPs, etc.).</div>
+</ul>
+<div class="callout callout-info"><strong>No pre-op visit?</strong> We are responsible for medication instructions (anticoagulation, GLPs, etc.).</div>
 </div></div></div>
 </div><!-- end p-periop -->
 
@@ -954,6 +932,157 @@ mark {
 </div></div></div>
 </div><!-- end p-surv -->
 
+<!-- Active Surveillance / Watchful Waiting -->
+<div class="section-group" data-section="p-as" id="p-as">
+<div class="section-head bg-prostate-surv"><span class="icon">&#x1F50D;</span> Active Surveillance / Watchful Waiting</div>
+
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Eligibility<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Low-Risk Prostate Cancer</h4><ul>
+<li>Active surveillance is the <strong>preferred management approach</strong></li>
+</ul></div>
+<div class="risk-card rc-mid"><h4>Favorable Intermediate-Risk</h4><ul>
+<li>Many patients can be safely managed with active surveillance</li>
+</ul></div>
+<p class="sub-heading">Features Suggesting AS Eligibility in Favorable Intermediate-Risk</p>
+<div class="table-wrap"><table class="proto-table">
+<tr><th>Feature</th><th>Criteria</th></tr>
+<tr><td>Cancer volume</td><td>&le;3 cores</td></tr>
+<tr><td>Gleason Pattern 4</td><td>&le;20%</td></tr>
+<tr><td>Pathology features</td><td><strong>No cribriform or intraductal histology</strong></td></tr>
+<tr><td>PSA Density (volume per MRI)</td><td>&lt;0.15</td></tr>
+<tr><td>Genomic Classifier Risk (e.g., Prolaris, GPS, Decipher)</td><td>Low risk score</td></tr>
+</table></div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Primary Pathway: MRI Before Initial Biopsy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="callout callout-tip"><strong>MRI before initial biopsy</strong> &mdash; considered to have initial confirmatory test completed.</div>
+
+<p class="sub-heading">Flowchart</p>
+<div class="flow-wrap"><div class="flow">
+<div class="flow-step"><div class="flow-icon">&#x1F489;</div><div class="flow-label">PSA</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-icon">&#x1F9F2;</div><div class="flow-label">mpMRI</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-icon">&#x1FA7B;</div><div class="flow-label">Diagnostic Biopsy</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-label">PSA Q6mo</div><div class="flow-sub">APP visit Q6 &times;2</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-box">MD visit<br>at 18 months</div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-icon">&#x1F9F2;</div><div class="flow-label">MRI &plusmn; Biopsy*</div><div class="flow-sub">Review at MD visit</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-label">PSA Q6mo</div><div class="flow-sub">APP visit Q6 &times;2</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-box">MD visit<br>at 18 months</div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-icon">&#x1FA7B;</div><div class="flow-label">MRI &plusmn; Biopsy</div><div class="flow-sub">Prefer biopsy if not<br>done at 18 months</div></div>
+</div></div>
+
+<p class="sub-heading">*Consider MRI with biopsy at 18 months if:</p>
+<ul>
+<li>GG2 on initial biopsy</li>
+<li>MRI changes</li>
+<li>PSA dynamics (including PSA density)</li>
+<li>High risk genomic score</li>
+</ul>
+<div class="callout callout-info">If otherwise low risk clinical features, reasonable to defer biopsy at 18 months.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Alternate Pathway: No Pre-Biopsy MRI<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+
+<p class="sub-heading">Flowchart</p>
+<div class="flow-wrap"><div class="flow">
+<div class="flow-step"><div class="flow-icon">&#x1F489;</div><div class="flow-label">PSA</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-icon">&#x1FA7B;</div><div class="flow-label">Diagnostic Biopsy</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-label">PSA Q6mo</div><div class="flow-sub">APP visit &times;1</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-box">MD visit<br>at 12 months</div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step"><div class="flow-icon">&#x1F9F2;</div><div class="flow-label">mpMRI</div><div class="flow-sub">Prior to MD visit<br>3&ndash;12 months</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-branch">
+<div><span class="flow-branch-label pos">+ Lesion</span></div>
+<div class="flow-step"><div class="flow-icon">&#x1FA7B;</div><div class="flow-label">Fusion +<br>12-core Biopsy</div></div>
+</div>
+</div></div>
+<div class="flow-wrap"><div class="flow" style="padding-left:40px;">
+<div class="flow-step" style="min-width:200px"><div class="flow-icon">&#x1F9F2;</div><div class="flow-label">mpMRI (continued)</div></div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-branch">
+<div><span class="flow-branch-label neg">No Lesion</span></div>
+<div class="flow-step"><div class="flow-icon">&#x1FA7B;</div><div class="flow-label">Consider<br>12-core Biopsy if*</div></div>
+</div>
+<div class="flow-arr">&rarr;</div>
+<div class="flow-step" style="max-width:160px"><div class="flow-label"><em>Stable Disease &rarr;<br>Continue primary pathway</em></div></div>
+</div></div>
+
+<p class="sub-heading">*Consider biopsy if:</p>
+<ul>
+<li>GG2 on initial biopsy</li>
+<li>MRI changes</li>
+<li>PSA dynamics (including PSA density)</li>
+<li>High risk genomic score</li>
+</ul>
+<div class="callout callout-info">Consider use of <strong><a href="https://canarypass.shinyapps.io/biopsy_calculator_3/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Canary PASS Current Risk Calculator</a></strong> for biopsy decisions.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Surveillance Testing<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>PSA:</strong> Q6 months. If concern about a PSA rise, confirm with repeat PSA collected at least 1 month later.</li>
+<li><strong>MRI:</strong> Q18&ndash;24 months, or as clinically indicated (MD concern, rising PSA). Prefer bpMRI for surveillance MRIs after initial high-quality mpMRI.</li>
+<li><strong>Biopsy:</strong> Q18&ndash;36 months, or as clinically indicated (MD concern, rising PSA, significant MRI change).</li>
+<li><strong>Genomic testing:</strong> Not routinely used outside of clinical trial setting, but may be used in select patients.</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Provider Visits<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li><strong>APP visit</strong> Q6 months; PSA prior to APP visit &times;2, then MD visit &mdash; repeat cycle</li>
+<li><strong>MD visit</strong> Q18 months; bpMRI prior to visit. Biopsy per MD.</li>
+<li>MiChart discussion between APP and MD instead of MD visit may be appropriate for some patients beyond the 18-month follow-up period.</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Transition to Treatment<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<li>Biopsy-confirmed disease <strong>grade progression/upgrading</strong></li>
+<li><strong>Cribriform or intraductal histology</strong> on surveillance biopsy</li>
+<li>May omit repeat biopsy in GG2 disease with concerning MRI, genomics, and/or PSA dynamics. However, consider that upgrading does impact use of ADT in patients undergoing radiation therapy.</li>
+<li>Always place in context of patient&rsquo;s overall health and survival.</li>
+</ul></div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Surveillance Intensity Over Time<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<p class="sub-heading">Years 1&ndash;5: Standard Surveillance</p>
+<ul>
+<li>Continue PSA Q6mo, MRI Q18&ndash;24mo, biopsy Q18&ndash;36mo pathways as above</li>
+</ul>
+<p class="sub-heading">After ~5&ndash;6 Years: Consider De-escalation</p>
+<ul>
+<li>Next MD visit: discuss eligibility for <strong>testing de-escalation</strong> (repeat MRI and/or biopsy)</li>
+<li>Outline individualized follow-up plan in chart, then continue with APP</li>
+<li>Always evaluate for appropriateness to transition to <strong>low-intensity surveillance</strong> or <strong>watchful waiting</strong></li>
+</ul>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Watchful Waiting<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-mid"><h4>Preferred Candidate</h4><ul>
+<li>Asymptomatic patients</li>
+<li>Life expectancy &lt;10 years</li>
+</ul></div>
+<p class="sub-heading">Low-Intensity Surveillance / Watchful Waiting</p>
+<ul>
+<li>Strongly recommended in patients with <strong>life expectancy &lt;10 years</strong></li>
+<li><strong>PSA:</strong> Q12 months; consider stopping PSA testing as indicated by cancer risk and life expectancy</li>
+<li>Typically no role for biopsy</li>
+</ul>
+<p class="sub-heading">Observation Protocol for High Risk Patients (NCCN) &mdash; Life Expectancy &lt;5 Years</p>
+<ul>
+<li>H&amp;P no more than yearly</li>
+<li>No routine imaging</li>
+<li>No routine lab testing</li>
+<li>Intervention triggered by symptom development or anticipated imminence</li>
+</ul>
+<div class="callout callout-info"><strong>Life expectancy &gt;5 years</strong> preferring observation: Any lab testing or imaging should be individualized according to patient goals of care (NCCN).</div>
+</div></div></div>
+</div><!-- end p-as -->
+
 <!-- Additional Therapy -->
 <div class="section-group" data-section="p-ther" id="p-ther">
 <div class="section-head bg-prostate"><span class="icon">&#x1F4CA;</span> Additional Therapy / PSA States</div>
@@ -967,26 +1096,6 @@ mark {
 <div class="risk-card rc-high"><h4>Metastatic Disease</h4><ul><li><strong>Tx:</strong> Management of metastatic prostate cancer</li></ul></div>
 </div></div></div>
 </div><!-- end p-ther -->
-
-<!-- Watchful Waiting -->
-<div class="section-group" data-section="p-ww" id="p-ww">
-<div class="section-head bg-prostate-surv"><span class="icon">&#x1F440;</span> Watchful Waiting</div>
-
-<div class="card open"><button class="card-head" onclick="toggleCard(this)">Watchful Waiting (High-Risk Setting)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<div class="risk-card rc-mid"><h4>Preferred Candidate</h4><ul>
-<li>Asymptomatic patients</li>
-<li>Life expectancy &lt;5 years</li>
-</ul></div>
-<p class="sub-heading">Observation Protocol (NCCN)</p>
-<ul>
-<li>H&amp;P no more than yearly</li>
-<li>No routine imaging</li>
-<li>No routine lab testing</li>
-<li>Intervention triggered by symptom development or anticipated imminence</li>
-</ul>
-<div class="callout callout-info"><strong>Life expectancy &gt;5 years</strong> preferring observation: Any lab testing or imaging should be individualized according to patient goals of care (NCCN).</div>
-</div></div></div>
-</div><!-- end p-ww -->
 
 <!-- Germline Genetics -->
 <div class="section-group" data-section="p-gen" id="p-gen">
@@ -1250,7 +1359,6 @@ mark {
 <div class="risk-card rc-mid"><h4>High-Risk pT0/pT1 or ypT0/pT1</h4><ul><li>Cysto/cytology Q3mo x 2yr, Q6mo to 5yr, then yearly</li><li>Cross-sectional + CT chest Q6mo x 2yr, then yearly</li></ul></div>
 <div class="risk-card rc-high"><h4>pT3/pT4/pN+ or ypT2-4/N+ &mdash; Refer Med Onc</h4><ul><li>Cysto/cyto as above; other imaging per med onc</li></ul></div>
 </div></div></div>
-
 </div><!-- end k-utuc -->
 
 <!-- AML -->
@@ -1283,7 +1391,7 @@ mark {
 </div><!-- end kidney -->
 
 <div class="no-results" id="noResults" style="display:none">No results found. Try a different search term.</div>
-<div class="footer">Updated April 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
+<div class="footer">Updated May 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
 </div><!-- end content-area -->
 
 <!-- ===== QR MODAL ===== -->
@@ -1307,8 +1415,8 @@ const pathwayConfig = {
     labels: ['NMIBC', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance']
   },
   prostate: {
-    sections: ['p-as', 'p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-ther', 'p-ww', 'p-gen'],
-    labels: ['Active Surv.', 'Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'Therapy', 'Watchful Waiting', 'Genetics']
+    sections: ['p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-as', 'p-ther', 'p-gen'],
+    labels: ['Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'AS / WW', 'Therapy', 'Genetics']
   },
   kidney: {
     sections: ['k-intake', 'k-preop', 'k-intraop', 'k-postop', 'k-surv', 'k-utuc', 'k-aml'],
