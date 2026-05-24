@@ -931,6 +931,14 @@ mark {
 </table></div>
 <div class="callout callout-warn"><strong>Important:</strong> Keep patients in Michigan Medicine system. Transition to local only at MD discretion.</div>
 </div></div></div>
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Post-RP Disease States (Lane&hellip;Borza; Eur Urol 2024)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Undetectable PSA &mdash; Favorable Pathology</h4><ul><li><strong>Tx:</strong> Surveillance</li></ul></div>
+<div class="risk-card rc-mid"><h4>Undetectable PSA &mdash; Concerning Path (pN+, ISUP GG4-5 AND pT3b-4 &plusmn; positive margin)</h4><ul><li><strong>Tx:</strong> Surveillance or adjuvant therapy</li></ul></div>
+<div class="risk-card rc-mid"><h4>PSA Persistence &mdash; Favorable Path, No radiographic disease</h4><ul><li><strong>Tx:</strong> Surveillance or consolidative therapy</li></ul></div>
+<div class="risk-card rc-high"><h4>PSA Persistence &mdash; Concerning Path (pN+, pT3-4, ISUP GG3-5, radiographic disease)</h4><ul><li><strong>Tx:</strong> Consolidative therapy</li></ul></div>
+<div class="risk-card rc-mid"><h4>PSA Recurrence (undetectable &rarr; detectable PSA)</h4><ul><li><strong>Tx:</strong> Salvage therapy (early) or surveillance</li></ul></div>
+<div class="risk-card rc-high"><h4>Metastatic Disease</h4><ul><li><strong>Tx:</strong> Management of metastatic prostate cancer</li></ul></div>
+</div></div></div>
 </div><!-- end p-surv -->
 
 <!-- Active Surveillance / Watchful Waiting -->
@@ -1083,20 +1091,6 @@ mark {
 <div class="callout callout-info"><strong>Life expectancy &gt;5 years</strong> preferring observation: Any lab testing or imaging should be individualized according to patient goals of care (NCCN).</div>
 </div></div></div>
 </div><!-- end p-as -->
-
-<!-- Additional Therapy -->
-<div class="section-group" data-section="p-ther" id="p-ther">
-<div class="section-head bg-prostate"><span class="icon">&#x1F4CA;</span> Additional Therapy / PSA States</div>
-
-<div class="card open"><button class="card-head" onclick="toggleCard(this)">Post-RP Disease States (Lane&hellip;Borza; Eur Urol 2024)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<div class="risk-card rc-low"><h4>Undetectable PSA &mdash; Favorable Pathology</h4><ul><li><strong>Tx:</strong> Surveillance</li></ul></div>
-<div class="risk-card rc-mid"><h4>Undetectable PSA &mdash; Concerning Path (pN+, ISUP GG4-5 AND pT3b-4 &plusmn; positive margin)</h4><ul><li><strong>Tx:</strong> Surveillance or adjuvant therapy</li></ul></div>
-<div class="risk-card rc-mid"><h4>PSA Persistence &mdash; Favorable Path, No radiographic disease</h4><ul><li><strong>Tx:</strong> Surveillance or consolidative therapy</li></ul></div>
-<div class="risk-card rc-high"><h4>PSA Persistence &mdash; Concerning Path (pN+, pT3-4, ISUP GG3-5, radiographic disease)</h4><ul><li><strong>Tx:</strong> Consolidative therapy</li></ul></div>
-<div class="risk-card rc-mid"><h4>PSA Recurrence (undetectable &rarr; detectable PSA)</h4><ul><li><strong>Tx:</strong> Salvage therapy (early) or surveillance</li></ul></div>
-<div class="risk-card rc-high"><h4>Metastatic Disease</h4><ul><li><strong>Tx:</strong> Management of metastatic prostate cancer</li></ul></div>
-</div></div></div>
-</div><!-- end p-ther -->
 
 <!-- Germline Genetics -->
 <div class="section-group" data-section="p-gen" id="p-gen">
@@ -1416,8 +1410,8 @@ const pathwayConfig = {
     labels: ['NMIBC', 'Pre-Op', 'Intra-Op', 'Post-Op', 'Surveillance']
   },
   prostate: {
-    sections: ['p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-as', 'p-ther', 'p-gen'],
-    labels: ['Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'AS / WW', 'Post-RP', 'Genetics']
+    sections: ['p-preop', 'p-periop', 'p-postop', 'p-surv', 'p-as', 'p-gen'],
+    labels: ['Pre-Op', 'Peri-Op', 'Post-Op', 'Survivorship', 'AS / WW', 'Genetics']
   },
   kidney: {
     sections: ['k-intake', 'k-preop', 'k-intraop', 'k-postop', 'k-surv', 'k-utuc', 'k-aml'],
