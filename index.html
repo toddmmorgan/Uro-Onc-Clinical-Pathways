@@ -1233,7 +1233,7 @@ mark {
 <li><strong>Timeline:</strong> 2mo low risk; 1mo high risk; 1wk IVC</li>
 <li><strong>Abx:</strong> Ancef (robotic/MIS); Cefoxitin (IVC); Clinda+Gent if allergy</li>
 <li><strong>Anticoag:</strong> SQ Heparin for all (exception: Dr. Kaffenberger&rsquo;s partials)</li>
-<li><strong>Blocks:</strong> QL block for all except IVC (in pre-op or PACU); intrathecal opioid option for open</li>
+<li><strong>Blocks/Pain service:</strong> Consider block for open cases; surgeon may elect intrathecal opioid for open cases</li>
 </ul></div></div></div>
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">IVC Thrombectomy Exceptions<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
@@ -1243,7 +1243,7 @@ mark {
 <ul>
 <li><strong>Inpatient imaging:</strong> MRI abd, Chest CT, possible brain MRI</li>
 <li><strong>Circ arrest:</strong> CVC coordination; TTE/TEE &plusmn; cardiac cath prior</li>
-<li><strong>Post-op:</strong> SICU (or CVICU if circ arrest)</li>
+<li><strong>Post-op:</strong> SICU (or CVICU if circ arrest); PACU labs</li>
 </ul></div></div></div>
 </div><!-- end k-preop -->
 
@@ -1261,12 +1261,12 @@ mark {
 <div class="section-group" data-section="k-postop" id="k-postop">
 <div class="section-head bg-kidney"><span class="icon">&#x1F3E5;</span> Post-Op Protocols</div>
 
-<div class="card open"><button class="card-head" onclick="toggleCard(this)">Lap/Robot Nephrectomy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Lap/Robot Nephrectomy (Oncology Service)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
 <div class="callout callout-warn"><strong>Note:</strong> Lap/Endo service radical and partial do NOT get SQH; Onc service gets SQH.</div>
 <div class="table-wrap"><table class="proto-table">
 <tr><th>POD</th><th>Pain</th><th>Diet</th><th>Drains</th><th>Meds</th><th>Activity</th><th>Prophy</th><th>Labs</th></tr>
 <tr><td class="row-label">POD 0</td><td>IV Tylenol + Tramadol/Oxy</td><td>Clear liquid</td><td>Rad: Foley, D/C Foley<br>Part: &plusmn;JP, Foley</td><td>Abx x24hr</td><td>OOB to chair</td><td>SCDs SQH TID</td><td>None in PACU</td></tr>
-<tr><td class="row-label">POD 1<br>(D/C day)</td><td>PO Tylenol + Tramadol/Oxy; Toradol after Cr</td><td>CLD &plusmn;ADAT</td><td>Part: D/C Foley</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCDs SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
+<tr><td class="row-label">POD 1<br>(D/C day)</td><td>PO Tylenol + Tramadol/Oxy; Toradol after Cr</td><td>CLD &plusmn;ADAT</td><td>Rad: D/C Foley if no epidural<br>Part: D/C Foley</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCDs SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
 <tr><td class="row-label">POD 2 PN<br>(D/C day)</td><td>PO Tylenol + Tramadol/Oxy</td><td>Regular</td><td>Part: D/C Foley, JP if low output (&gt;4hr post-Foley); &plusmn;JP Cr</td><td>D/C: PO pain, Colace/Miralax; opioid limit if &lt;6 tabs</td><td>As above</td><td>SCDs SQH TID</td><td>No labs D/C day</td></tr>
 </table></div>
 </div></div></div>
@@ -1274,23 +1274,23 @@ mark {
 <div class="card"><button class="card-head" onclick="toggleCard(this)">Open Nephrectomy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
 <div class="table-wrap"><table class="proto-table">
 <tr><th>POD</th><th>Pain</th><th>Diet</th><th>Drains</th><th>Meds</th><th>Activity</th><th>Prophy</th><th>Labs</th></tr>
-<tr><td class="row-label">POD 0</td><td>IV Tylenol + Oxy</td><td>Clear liquid</td><td>Rad: Foley, D/C Foley<br>Part: &plusmn;JP, Foley</td><td>Abx x24hr</td><td>OOB to chair</td><td>SCDs SQH TID</td><td>None in PACU</td></tr>
-<tr><td class="row-label">POD 1<br>(D/C day)</td><td>IV/PO Tylenol + Oxy; Toradol after Cr</td><td>CLD &plusmn;advance to regular</td><td>Part: per attending</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
+<tr><td class="row-label">POD 0</td><td>IV Tylenol + Oxy</td><td>Clear liquid</td><td>Rad: Foley, D/C Foley<br>Part: &plusmn;JP, Foley</td><td>Abx x24hr</td><td>OOB to chair</td><td>SCDs SQH TID</td><td>Rad (&plusmn;IVC thrombectomy): PACU labs<br>Part: None in PACU</td></tr>
+<tr><td class="row-label">POD 1<br>(D/C day for radical)</td><td>IV/PO Tylenol + Oxy; Toradol after Cr</td><td>CLD &plusmn;advance to regular</td><td>Part: per attending</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
 <tr><td class="row-label">POD 2+ until D/C</td><td>PO Tylenol + Oxy</td><td>Regular</td><td>Part: D/C Foley, JP if low output; &plusmn;JP Cr</td><td>D/C: PO pain, Colace/Miralax; opioid limit</td><td>As above</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos; no labs D/C day</td></tr>
 </table></div>
 </div></div></div>
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">Nephroureterectomy &amp; Outpatient Follow-up<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<p class="sub-heading">Nephroureterectomy:</p>
+<p class="sub-heading">Nephroureterectomy (Inpatient):</p>
 <ul>
 <li>Send JP Cr prior to removal; home with Foley</li>
 <li>Single dose abx at Foley removal; no cystogram unless surgeon specifies</li>
 </ul>
-<p class="sub-heading">All MIS Partial &amp; Radical:</p>
+<p class="sub-heading">All MIS Partial &amp; Radical (Outpatient):</p>
 <ul>
 <li>Video visit 1&ndash;2 wk for pathology (per surgeon); BMP/CBC in prep</li>
 </ul>
-<p class="sub-heading">Nephroureterectomy:</p>
+<p class="sub-heading">Nephroureterectomy (Outpatient):</p>
 <ul>
 <li>Catheter pull 7&ndash;10 days; CMP/CBC at 7&ndash;10 days</li>
 </ul>
@@ -1308,11 +1308,36 @@ mark {
 <div class="section-group" data-section="k-surv" id="k-surv">
 <div class="section-head bg-kidney-surv"><span class="icon">&#x1F4C5;</span> Post-Nephrectomy Surveillance</div>
 
-<div class="card open"><button class="card-head" onclick="toggleCard(this)">Low-Risk Stage I (T1)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
+<div class="card open"><button class="card-head" onclick="toggleCard(this)">Risk Groups &amp; Follow-up Schedule<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<p class="intro-text">Classify patients managed with partial or radical nephrectomy for a malignant renal mass into one of these risk groups:</p>
+<div class="risk-card rc-low"><h4>Low Risk (LR)</h4><ul><li>pT1 and Grade 1/2</li></ul></div>
+<div class="risk-card rc-mid"><h4>Intermediate Risk (IR)</h4><ul><li>pT1 and Grade 3/4, or pT2 any grade</li></ul></div>
+<div class="risk-card rc-high"><h4>High Risk (HR)</h4><ul><li>pT3 any grade</li></ul></div>
+<div class="risk-card rc-high"><h4>Very High Risk (VHR)</h4><ul><li>pT4 or pN1, sarcomatoid/rhabdoid dedifferentiation, or macroscopic positive margin</li></ul></div>
+<div class="callout callout-warn"><strong>Positive microscopic margins:</strong> consider at least one risk level higher, with increased clinical vigilance.</div>
+<p class="sub-heading">Follow-up Visits by Months After Surgery</p>
+<div class="table-wrap"><table class="proto-table">
+<tr><th>Risk</th><th>3</th><th>6</th><th>9</th><th>12</th><th>18</th><th>24</th><th>30</th><th>36</th><th>48</th><th>60</th><th>72&ndash;84</th><th>96&ndash;120</th></tr>
+<tr><td class="row-label">LR</td><td></td><td></td><td></td><td>&#10003;</td><td></td><td>&#10003;</td><td></td><td></td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+<tr><td class="row-label">IR</td><td></td><td>&#10003;</td><td></td><td>&#10003;</td><td></td><td>&#10003;</td><td></td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+<tr><td class="row-label">HR</td><td></td><td>&#10003;</td><td></td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+<tr><td class="row-label">VHR</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+</table></div>
+<ul>
+<li><strong>Each visit:</strong> history, exam, labs, and abdominal and chest imaging</li>
+<li><strong>Abdominal imaging:</strong> CT or MRI with pre- and post-contrast generally preferred. After 2 years, ultrasound alternating with cross-sectional imaging may be considered for LR and IR at physician discretion.</li>
+<li><strong>Chest imaging:</strong> CXR for LR and IR; CT chest generally preferred for HR and VHR</li>
+<li><strong>Beyond 5 years:</strong> shared decision-making should guide further imaging (~30% of recurrences occur after 60 months); CXR may replace chest CT for HR/VHR</li>
+</ul>
+<div class="callout callout-info">Follow-up timeline is approximate and allows flexibility for patient, caregiver, and institutional needs.</div>
+</div></div></div>
+
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Low-Risk Stage I (T1)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
 <li>Optional 6-month post-op imaging for baseline</li>
 <li>CBC, BMP yearly to 5 years; clinically indicated after</li>
 <li>Cross-sectional imaging annually, sparing ultrasound use</li>
 <li>CT chest only if baseline findings need follow-up</li>
+<li>After ablation: MRI preferred</li>
 </ul></div></div></div>
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">High-Risk Surveillance<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
@@ -1329,21 +1354,16 @@ mark {
 <li><strong>BHD:</strong> Chest imaging or referral to pulmonology</li>
 </ul>
 <p class="sub-heading">Graduation from Surveillance:</p>
-<div class="risk-card rc-low"><h4>Low/Int Risk RCC</h4><ul><li>Standard: 10yr (Q2yr after 5yr)</li><li>Young/multifocal: 10yr or longer</li></ul></div>
-<div class="risk-card rc-high"><h4>High/Very High Risk RCC</h4><ul><li>Standard: 10yr (Q2yr after 5yr)</li><li>Young/multifocal: 10yr or longer</li></ul></div>
+<div class="risk-card rc-mid"><h4>All RCC (Low through Very High Risk)</h4><ul><li>Standard: 10yr (Q2yr after 5yr)</li><li>Young/multifocal: 10yr or longer</li></ul></div>
 <div class="risk-card rc-high"><h4>Familial RCC</h4><ul><li>Lifelong</li></ul></div>
 <div class="risk-card rc-mid"><h4>pT0/pT1 UCC</h4><ul><li>Cysto 5yr (low risk) or 10yr (high risk)</li></ul></div>
 <div class="risk-card rc-mid"><h4>pT2-4, N+</h4><ul><li>Cysto for 10 years</li></ul></div>
 </div></div></div>
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">Thermal Ablation Follow-up<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li><strong>LR:</strong> pT1, Grade 1/2</li>
-<li><strong>IR:</strong> pT1 Grade 3/4 or pT2</li>
-<li><strong>HR:</strong> pT3</li>
-<li><strong>VHR:</strong> pT4, pN1, sarcomatoid/rhabdoid, or macroscopic positive margin</li>
-</ul>
-<div class="callout callout-info">Positive microscopic margins: consider at least one risk level higher. Post-ablation: pre/post-contrast imaging within 6 months; then follow IR protocol.</div>
-</div></div></div>
+<li>If biopsy confirmed malignancy or was non-diagnostic: <strong>pre- and post-contrast cross-sectional abdominal imaging within 6 months</strong> (if not contraindicated); <strong>MRI preferred</strong></li>
+<li>Subsequent follow-up per the <strong>Intermediate Risk (IR)</strong> postoperative protocol (see Risk Groups &amp; Follow-up Schedule)</li>
+</ul></div></div></div>
 </div><!-- end k-surv -->
 
 <!-- UTUC -->
@@ -1393,7 +1413,7 @@ mark {
 </div><!-- end kidney -->
 
 <div class="no-results" id="noResults" style="display:none">No results found. Try a different search term.</div>
-<div class="footer">Updated May 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
+<div class="footer">Updated October 2026 &middot; Division of Urologic Oncology &middot; University of Michigan</div>
 </div><!-- end content-area -->
 
 <!-- ===== QR MODAL ===== -->
