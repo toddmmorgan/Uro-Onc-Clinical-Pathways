@@ -665,7 +665,7 @@ body.searching .section-nav { display: none; }
 <!--            BLADDER CANCER                -->
 <!-- ======================================== -->
 <div class="pathway" data-pathway="bladder" data-label="Bladder Cancer">
-<div class="pathway-owner">Pathway owner: <strong>Dr. Jeff Montgomery</strong></div>
+<div class="pathway-owner">Pathway owner: <strong>Dr. Jeff Montgomery</strong> &middot; Formally reviewed annually each spring</div>
 
 
 <!-- NMIBC -->
@@ -691,11 +691,18 @@ body.searching .section-nav { display: none; }
 <div class="callout callout-info"><strong>No pre-op visit?</strong> We are responsible for medication instructions (anticoagulation, GLPs, etc.).</div>
 </div></div></div>
 
+<div class="card"><button class="card-head" onclick="toggleCard(this)">NMIBC Risk Groups (AUA 2026 Amendment)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="risk-card rc-low"><h4>Low Risk</h4><ul><li>LG solitary Ta &le;3cm</li><li>PUNLMP</li></ul></div>
+<div class="risk-card rc-mid"><h4>Intermediate Risk</h4><ul><li>LG Ta, recurrence within 1 year</li><li>LG Ta &gt;3cm</li><li>LG Ta, multifocal</li></ul></div>
+<div class="risk-card rc-high"><h4>High Risk</h4><ul><li>Any HG or CIS</li><li>Any subtype histology</li><li>Any LVI</li><li>Any HG prostatic urethral involvement</li></ul></div>
+<div class="callout callout-info">LG = low grade; HG = high grade; PUNLMP = papillary urothelial neoplasm of low malignant potential; LVI = lymphovascular invasion. The 2025&ndash;2026 update moved <strong>HG Ta of any size to high risk</strong>.</div>
+</div></div></div>
+
 <div class="card"><button class="card-head" onclick="toggleCard(this)">Principles of Intravesical Therapy<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
 <li>Complete resection prior to initiating intravesical therapy</li>
 <li>Treatments should begin <strong>2&ndash;4 weeks</strong> after resection</li>
-<li><strong>High-risk</strong> (HG Ta &gt;3cm, HG T1, CIS): BCG 1st line; Gem/Doce 2nd line with 2yr maintenance; re-induction BCG 3rd line; Adstiladrin or Inlexzo for BCG-unresponsive CIS (see below); consider clinical trials</li>
-<li><strong>Intermediate-risk</strong> (HG Ta &lt;3cm): BCG, Gem/Doce, or trial of surveillance alone</li>
+<li><strong>High-risk</strong> (any HG including HG Ta, CIS, subtype histology, LVI, HG prostatic urethral involvement): BCG 1st line; Gem/Doce 2nd line with 2yr maintenance; re-induction BCG 3rd line; Adstiladrin or Inlexzo for BCG-unresponsive disease, CIS &plusmn; papillary or papillary-only (see below); consider clinical trials</li>
+<li><strong>Intermediate-risk</strong> (LG Ta recurrence within 1 year, &gt;3cm, or multifocal): consider intravesical <strong>Gemcitabine</strong> or <strong>Zusduri</strong> (mitomycin intravesical solution)</li>
 <li>BCG dose reduction as needed per supply or tolerance; down to <strong>10% (5mg TICE)</strong> can still be effective</li>
 <li>Maintenance BCG at <strong>3, 6, and 12 months</strong> from first induction dose. At least <strong>2 years of maintenance is ideal</strong>; can extend to 3 years at surgeon discretion if supply allows.</li>
 <li><strong>Recurrent low-grade Ta:</strong> Induction + maintenance Gemcitabine monthly x 24mo (1st line); Mitomycin C (2nd line); BCG or Gem/Doce also options</li>
@@ -703,8 +710,8 @@ body.searching .section-nav { display: none; }
 <div class="callout callout-warn"><strong>BCG Shortage:</strong> Prioritize induction for HG T1 and CIS, plus continuation of initiated courses. 2 years of maintenance may not be possible with current shortage. Gem/Doce as alternative. <a href="https://forms.office.com/r/snqxrVEqX2" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;">BCG Request Form for New Starts &rarr;</a></div>
 </div></div></div>
 
-<div class="card"><button class="card-head" onclick="toggleCard(this)">BCG-Unresponsive CIS: Adstiladrin &amp; Inlexzo<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
-<div class="callout callout-warn"><strong>Important:</strong> Both agents are extremely expensive. Patients must meet <strong>FDA-approved criteria</strong>, which require the presence of <strong>CIS</strong> (with or without papillary tumors) and BCG-unresponsive disease. These are options for patients who refuse or are unfit for cystectomy.</div>
+<div class="card"><button class="card-head" onclick="toggleCard(this)">BCG-Unresponsive NMIBC: Adstiladrin &amp; Inlexzo<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="callout callout-warn"><strong>Important:</strong> Both agents are extremely expensive. Per <strong>2026 NCCN guidelines</strong>, either may be offered for BCG-unresponsive NMIBC with <strong>CIS &plusmn; papillary tumors</strong> or <strong>papillary-only</strong> disease. FDA labeling is for CIS &plusmn; papillary tumors. These are options for patients who refuse or are unfit for cystectomy.</div>
 <div class="risk-card rc-mid"><h4>Adstiladrin (nadofaragene firadenovec-vncg)</h4><ul>
 <li>Non-replicating adenoviral vector gene therapy delivering interferon-&alpha;2b to the urothelium</li>
 <li><strong>Schedule:</strong> 75 mL intravesical instillation <strong>every 3 months (quarterly)</strong></li>
@@ -750,6 +757,7 @@ body.searching .section-nav { display: none; }
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">During the Clinic Visit<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
 <li>If &ge; cT2 or N+, assure <strong>neoadjuvant chemo</strong> considered; arrange hem/onc referral if appropriate</li>
+<li>For eligible patients, consider bladder preservation with <strong>trimodality therapy (TMT)</strong> and the <strong>ARCHER trial</strong></li>
 <li>Discuss early ambulation, incentive spirometer, expect <strong>3&ndash;5 day stay</strong></li>
 <li>Increase activity (walking, cardio, <strong>MSHOP</strong>) beginning 4 weeks pre-op; provide MSHOP bag</li>
 <li>Stop smoking &ge;4 weeks prior; refer to cessation if needed</li>
@@ -865,7 +873,7 @@ body.searching .section-nav { display: none; }
 <!--            PROSTATE CANCER               -->
 <!-- ======================================== -->
 <div class="pathway" data-pathway="prostate" data-label="Prostate Cancer" style="display:none">
-<div class="pathway-owner">Pathway owners: <strong>Dr. Tudor Borza &amp; Dr. Simpa Salami</strong></div>
+<div class="pathway-owner">Pathway owners: <strong>Dr. Tudor Borza &amp; Dr. Simpa Salami</strong> &middot; Formally reviewed annually each spring</div>
 
 
 <!-- Preoperative -->
@@ -985,6 +993,7 @@ body.searching .section-nav { display: none; }
 <div class="risk-card rc-high"><h4>PSA Persistence &mdash; Concerning Path (pN+, pT3-4, ISUP GG3-5, radiographic disease)</h4><ul><li><strong>Tx:</strong> Consolidative therapy</li></ul></div>
 <div class="risk-card rc-mid"><h4>PSA Recurrence (undetectable &rarr; detectable PSA)</h4><ul><li><strong>Tx:</strong> Salvage therapy (early) or surveillance</li></ul></div>
 <div class="risk-card rc-high"><h4>Metastatic Disease</h4><ul><li><strong>Tx:</strong> Management of metastatic prostate cancer</li></ul></div>
+<div class="callout callout-tip"><strong>PSMA PET:</strong> Consider for patients with PSA &ge;0.2 after radical prostatectomy.</div>
 </div></div></div>
 </div><!-- end p-surv -->
 
@@ -1173,7 +1182,7 @@ body.searching .section-nav { display: none; }
 <div style="background:#3a6ea5;color:#fff;font-size:12px;font-weight:600;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">Tempus xG Cancer and Next RNAinsight<span style="font-size:11px;opacity:.8;">&#10003; Accept</span></div>
 <div style="padding:14px;font-size:13px;line-height:1.7;color:var(--text-sec);">
 <div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Consent signed?</span> <span style="background:#3a6ea5;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Yes</span> <span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;">No</span></div>
-<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Obtained and Explained by:</span> <span style="border:1px solid var(--border);padding:3px 8px;border-radius:4px;display:inline-block;min-width:180px;background:#fff;font-size:12px;">Todd Morgan</span></div>
+<div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Obtained and Explained by:</span> <span style="border:1px solid var(--border);padding:3px 8px;border-radius:4px;display:inline-block;min-width:180px;background:#fff;font-size:12px;color:var(--text-muted);font-style:italic;">[Ordering clinician]</span></div>
 <div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Release to patient portal:</span> <span style="background:#3a6ea5;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Immediate</span> <span style="background:#e2e6ea;padding:2px 8px;border-radius:4px;font-size:11px;">90 Day</span></div>
 <div style="margin-bottom:10px;"><span style="color:var(--text);font-weight:600;">Select a germline panel for RNA testing:</span><br>
 <span style="background:#3a6ea5;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600;display:inline-block;margin:4px 4px 0 0;">xG RNA (CancerNext) - 36 genes</span>
@@ -1198,7 +1207,7 @@ body.searching .section-nav { display: none; }
 <!--            KIDNEY CANCER                 -->
 <!-- ======================================== -->
 <div class="pathway" data-pathway="kidney" data-label="Kidney Cancer" style="display:none">
-<div class="pathway-owner">Pathway owner: <strong>Dr. Alice Semerjian</strong></div>
+<div class="pathway-owner">Pathway owner: <strong>Dr. Alice Semerjian</strong> &middot; Formally reviewed annually each spring</div>
 
 
 <!-- Intake -->
