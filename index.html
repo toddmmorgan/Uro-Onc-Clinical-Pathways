@@ -588,6 +588,13 @@ mark {
   color: var(--text-sec);
 }
 body.searching .section-nav { display: none; }
+.pathway-owner {
+  margin: 16px 4px 0;
+  font-size: 12px;
+  color: var(--text-sec);
+}
+.pathway-owner strong { color: var(--text); font-weight: 600; }
+.content-area.searching .pathway-owner { display: none; }
 .chip:focus-visible, .card-head:focus-visible, .nav-tab:focus-visible {
   outline: 3px solid var(--teal);
   outline-offset: 2px;
@@ -658,6 +665,8 @@ body.searching .section-nav { display: none; }
 <!--            BLADDER CANCER                -->
 <!-- ======================================== -->
 <div class="pathway" data-pathway="bladder" data-label="Bladder Cancer">
+<div class="pathway-owner">Pathway owner: <strong>Dr. Jeff Montgomery</strong></div>
+
 
 <!-- NMIBC -->
 <div class="section-group" data-section="nmibc" id="nmibc">
@@ -856,6 +865,8 @@ body.searching .section-nav { display: none; }
 <!--            PROSTATE CANCER               -->
 <!-- ======================================== -->
 <div class="pathway" data-pathway="prostate" data-label="Prostate Cancer" style="display:none">
+<div class="pathway-owner">Pathway owners: <strong>Dr. Tudor Borza &amp; Dr. Simpa Salami</strong></div>
+
 
 <!-- Preoperative -->
 <div class="section-group" data-section="p-preop" id="p-preop">
@@ -1187,6 +1198,8 @@ body.searching .section-nav { display: none; }
 <!--            KIDNEY CANCER                 -->
 <!-- ======================================== -->
 <div class="pathway" data-pathway="kidney" data-label="Kidney Cancer" style="display:none">
+<div class="pathway-owner">Pathway owner: <strong>Dr. Alice Semerjian</strong></div>
+
 
 <!-- Intake -->
 <div class="section-group" data-section="k-intake" id="k-intake">
