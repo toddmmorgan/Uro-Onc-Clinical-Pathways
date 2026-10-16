@@ -770,7 +770,7 @@ body.searching .section-nav { display: none; }
 <li><strong>Staging:</strong> CT Urogram or A/P and Chest CT within 6 weeks of surgery</li>
 <li><strong>Cefoxitin</strong> 30 mg/kg (or alt if allergic) IV on call to OR</li>
 <li><strong>Acetaminophen</strong> 1000mg PO 30 min prior to OR</li>
-<li><strong>Alvimopan</strong> 12mg PO 30min&ndash;5hrs prior, then 12mg BID x 7 days</li>
+<li><strong>Alvimopan</strong> 12mg PO 30min&ndash;5hrs prior, then 12mg BID until return of bowel function; D/C on POD 2 if not requiring opioids</li>
 </ul>
 <div class="callout callout-warn"><strong>Alvimopan:</strong> Avoid if opioids &gt;7 consecutive days prior, liver failure, kidney failure, or GI obstruction. D/C on POD 2 if not requiring opioids.</div>
 </div></div></div>
@@ -921,7 +921,7 @@ body.searching .section-nav { display: none; }
 <div class="section-head bg-prostate"><span class="icon">&#x1F3E5;</span> Postoperative Care</div>
 
 <div class="card open"><button class="card-head" onclick="toggleCard(this)">POD 0 (Day of Surgery)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li><strong>Pain:</strong> PO Tylenol + Tramadol/Oxycodone/Toradol (if no CI); IV only for breakthrough</li>
+<li><strong>Pain:</strong> PO Tylenol + Tramadol/Toradol (if no CI); IV only for breakthrough</li>
 <li><strong>Diet:</strong> Clears &rarr; ADAT</li>
 <li><strong>Drains:</strong> Foley &plusmn; JP</li>
 <li><strong>Meds:</strong> Abx x 24hr; Home ASA if cardiac hx</li>
@@ -931,7 +931,7 @@ body.searching .section-nav { display: none; }
 </ul></div></div></div>
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">POD 1 (Day of Discharge)<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
-<li><strong>Pain:</strong> PO Tylenol + Tramadol/Oxycodone; Toradol if Cr OK</li>
+<li><strong>Pain:</strong> PO Tylenol + Tramadol; Toradol if Cr OK</li>
 <li><strong>Diet:</strong> Regular; HLIV if &gt;300cc PO intake</li>
 <li><strong>Drains:</strong> D/C JP (check JP Cr if output &gt;30cc after OOB); home with Foley; Foley/leg bag teaching</li>
 <li><strong>Meds:</strong> Colace 100mg BID + Miralax 17g daily; Bacitracin to meatus QID</li>
@@ -939,10 +939,22 @@ body.searching .section-nav { display: none; }
 <li><strong>Labs:</strong> CBC, BMP</li>
 </ul></div></div></div>
 
+<div class="card"><button class="card-head" onclick="toggleCard(this)">Same-Day Discharge<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
+<div class="callout callout-info"><strong>Goal:</strong> Discharge from PACU within 4 hours once tolerating diet, urine output is clear (may be red but without clots), and ambulating.</div>
+<ul>
+<li><strong>Labs:</strong> None in PACU unless high EBL</li>
+<li><strong>Activity:</strong> Ambulate within 1 hour of PACU arrival</li>
+<li><strong>Diet:</strong> CLD &rarr; ADAT to regular within 2 hours of PACU arrival</li>
+<li><strong>Meds in PACU:</strong> Tylenol; Celebrex PRN; Oxybutynin PRN; Colace 100mg BID; Miralax 17g daily; Bacitracin to meatus QID</li>
+<li><strong>Drains:</strong> Home with Foley</li>
+<li><strong>D/C Meds:</strong> Celebrex 200mg BID x 3 days, Colace, Miralax, Bactrim x1 dose pre-catheter removal (alt: Cipro/Keflex), Bacitracin to tip QID until catheter out</li>
+<li><strong>Supplies, restrictions &amp; follow-up:</strong> Same as standard discharge (below)</li>
+</ul></div></div></div>
+
 <div class="card"><button class="card-head" onclick="toggleCard(this)">Discharge<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content"><ul>
 <li><strong>D/C Meds:</strong> PO pain (6 pills PRN), Colace, Miralax, Bactrim x1 dose pre-catheter removal (alt: Cipro/Keflex), Bacitracin to tip QID until catheter out; <strong>No Flomax</strong></li>
 <li><strong>Supplies:</strong> Foley bags, leg bags (from OBS/5C)</li>
-<li><strong>Restrictions:</strong> No lifting &gt;10 lbs x 6 weeks; no driving with catheter or on narcotics</li>
+<li><strong>Restrictions:</strong> No lifting &gt;10 lbs x 4 weeks; no driving with catheter or on narcotics</li>
 </ul>
 <div class="callout callout-warn"><strong>Important:</strong> Catheter questions should be directed straight to University of Michigan Urology.</div>
 <ul>
@@ -1325,13 +1337,19 @@ body.searching .section-nav { display: none; }
 <div class="table-wrap"><table class="proto-table">
 <tr><th>POD</th><th>Pain</th><th>Diet</th><th>Drains</th><th>Meds</th><th>Activity</th><th>Prophy</th><th>Labs</th></tr>
 <tr><td class="row-label">POD 0</td><td>IV Tylenol + Oxy</td><td>Clear liquid</td><td>Rad: Foley, D/C Foley<br>Part: &plusmn;JP, Foley</td><td>Abx x24hr</td><td>OOB to chair</td><td>SCDs SQH TID</td><td>Rad (&plusmn;IVC thrombectomy): PACU labs<br>Part: None in PACU</td></tr>
-<tr><td class="row-label">POD 1<br>(D/C day for radical)</td><td>IV/PO Tylenol + Oxy; Toradol after Cr</td><td>CLD &plusmn;advance to regular</td><td>Part: per attending</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
-<tr><td class="row-label">POD 2+ until D/C</td><td>PO Tylenol + Oxy</td><td>Regular</td><td>Part: D/C Foley, JP if low output; &plusmn;JP Cr</td><td>D/C: PO pain, Colace/Miralax; opioid limit</td><td>As above</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos; no labs D/C day</td></tr>
+<tr><td class="row-label">POD 1<br>(D/C day for radical)</td><td>IV/PO Tylenol + Oxy; Toradol after Cr</td><td>CLD &plusmn;advance to regular</td><td>Part: D/C Foley</td><td>D/C abx; Colace BID + Miralax</td><td>Ambulate IS</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
+<tr><td class="row-label">POD 2+ until D/C</td><td>PO Tylenol + Oxy</td><td>Regular</td><td>Part: D/C JP if low output (&gt;4hr post-Foley removal); &plusmn;JP Cr</td><td>D/C: PO pain, Colace/Miralax; opioid limit</td><td>As above</td><td>SCD SQH TID</td><td>CBC/Basic/Mg/Phos; no labs D/C day</td></tr>
 </table></div>
 </div></div></div>
 
 <div class="card"><button class="card-head" onclick="toggleCard(this)">Nephroureterectomy &amp; Outpatient Follow-up<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="card-body"><div class="card-content">
 <p class="sub-heading">Nephroureterectomy (Inpatient):</p>
+<div class="table-wrap"><table class="proto-table">
+<tr><th>POD</th><th>Pain</th><th>Diet</th><th>Drains</th><th>Meds</th><th>Activity</th><th>Prophy</th><th>Labs</th></tr>
+<tr><td class="row-label">POD 0</td><td>PO Tylenol + narcotics</td><td>Clears, ADAT</td><td>JP, Foley</td><td>Abx x24hr</td><td>OOB, walk within 4hr of reaching unit</td><td>SCDs</td><td>Only if indicated</td></tr>
+<tr><td class="row-label">POD 1<br>(potential D/C day)</td><td>PO Tylenol + narcotics; Toradol 30mg PRN if Cr &lt;1.5</td><td>Regular</td><td>Keep Foley at discharge; D/C JP if output low</td><td>D/C abx after 24hr; Colace 100mg BID; restart home meds as appropriate</td><td>Ambulate, IS</td><td>SCDs &plusmn;SQH TID</td><td>CBC/Basic/Mg/Phos</td></tr>
+<tr><td class="row-label">POD 2<br>(if needed)</td><td>PO Tylenol + narcotics</td><td>Regular</td><td>Remove JP if still in; Foley remains at discharge</td><td>D/C: PO pain, Colace/Miralax</td><td>As above</td><td>SCDs &plusmn;SQH TID</td><td>No labs D/C day</td></tr>
+</table></div>
 <ul>
 <li>Send JP Cr prior to removal; home with Foley</li>
 <li>Single dose abx at Foley removal; no cystogram unless surgeon specifies</li>
